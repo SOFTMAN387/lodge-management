@@ -13,7 +13,7 @@ export default function Home() {
   return (
   <>
   <div>
-      <Head>
+  <Head>
         <title>
           OYO : India`s Best Online Hotel Booking Site For Sanitized Stay.
         </title>
