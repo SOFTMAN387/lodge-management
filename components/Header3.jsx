@@ -5,6 +5,7 @@ import { useState } from "react";
 
 const Header3 = () => {
   const [city, setCity] = useState(" ");
+  console.log(city);
 
   return (
     <div className=" bg-gradient-to-r from-pink-600 to-red-400 h-60 w-100 items-center">

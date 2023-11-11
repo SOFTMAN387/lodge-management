@@ -1,50 +1,77 @@
-// import Filters from "@/components/Filters";
 import Header1 from "@/components/Header1";
 import Hotel from "@/components/Hotel";
-// import axios from "axios";
+import Filters from "@/components/Filter";
+import axios from "axios";
 import { useEffect, useState } from "react";
+import connectDB from "@/mongoDB/connectdb";
 
-const Hotels = ({ hotels }) => {
-//   const [price, setPrice] = useState(3500);
-//   const [list, setList] = useState([]);
-//   const [checkedList, setCheckedList] = useState([]);
+const Hotels = ({ hotels,loc }) => {
+  const[price,setPrice]=useState(0);
+  const [checkedList, setCheckedList] = useState([]);
+  const [total,setToal]=useState(0);
 
-//   const handleCheckList = async () => {
-//     const { data } = await axios.get(`/api/facilities/search?val=${checkedList}`);
-//     if (data?.hotels) {
-//       setList(data.hotels);
-//     }
-//   };
+  const handleCheckList = async (e) => {
+    let newList = [];
+    if (e.target.checked===true) {
+      newList.push(...checkedList,e.target.value);
+      setCheckedList(newList);
+      return;
+    }
+    if(e.target.checked===false){
+      newList = checkedList.filter((i) => i !== e.target.value);
+      setCheckedList(newList);
+    }
+   
+  };
 
-//   useEffect(()=>{
-//     if(checkedList){
-//       handleCheckList();
-//     }
-//   },[checkedList])
+//   const [facilityList,setFacilityList]=useState({
+//     "wifi":"",
+//     "swiming":"",
+//     "garden":"",
+//     "parking":"",
+//     "gym":""
 
-//   const handlePrice = async () => {
-//     const { data } = await axios.get(`/api/facilities/range?price=${price}`);
-//     if (data?.hotels) {
-//       setList(data.hotels);
-//     }
-//   };
+// });
+
+// const handleCheckList = async (e) => {
+//   if(e.target.checked===true){
+//       setFacilityList({...facilityList,[e.target.name]:e.target.value});
+//   }
+
+//   if(e.target.checked===false){
+//       setFacilityList({...facilityList,[e.target.name]:""}); 
+//   }
+// }
+  
+  const [list, setList] = useState([]);
+
+  const handleSearch = async () => {
+    const { data } = await axios.get(`/api/hotels/filter?city=${loc}&val=${checkedList}&price=${price}`);
+    setToal(data?.facilities?.length);
+    if (data?.hotels) {
+     
+      setList(data.hotels);
+    }
+  };
 
   return (
     <>
       <Header1 />
-      {/* <div className="grid grid-cols-12">
+       <div className="grid grid-cols-12">
         <div className=" col-span-3">
           <Filters
             price={price}
             setPrice={setPrice}
-            handlePrice={handlePrice}
+            handleCheckList={handleCheckList}
+            handleSearch={handleSearch}     
             checkedList={checkedList}
-            setCheckedList={setCheckedList}
           />
-        </div> */}
-        {/* <div className="col-span-9">
-          {list.length > 0
-            ? list.map((e) => {
+        </div>
+      
+        <div className="col-span-9 mt-2">
+        <span>Hotel Searched Founs ! {total}</span>
+          {list?.length > 0
+            ? list?.map((e) => {
                 return (
                   <div className=" m-5 " key={e._id}>
                     <Hotel e={e} />
@@ -52,7 +79,7 @@ const Hotels = ({ hotels }) => {
                 );
               })
             : hotels
-            ? hotels.map((e) => {
+            ? hotels?.map((e) => {
                 return (
                   <div className=" m-5 " key={e._id}>
                     <Hotel e={e} />
@@ -60,31 +87,26 @@ const Hotels = ({ hotels }) => {
                 );
               })
             : ""}
-        </div> */}
+        </div> 
         <div>
-        <div className=" m-5 ">
-                    <Hotel />
-                    <Hotel />
-                    <Hotel />
-                    <Hotel />
-                  </div>
         </div>
-      {/* </div> */}
+       </div> 
     </>
   );
 };
 
-// export async function getServerSideProps(ctx) {
-//   const res = await fetch(
-//     `${process.env.BASE_URL}/api/hotels?city=${ctx.query.city}`
-//   );
-//   const data = await res.json();
 
-//   return {
-//     props: {
-//       hotels: data.hotels ? data.hotels : data.allhotels,
-//     },
-//   };
-// }
+export async function getServerSideProps(ctx) {
+  const res = await fetch(
+    `${process.env.BASE_URL}/api/hotels?city=${ctx.query.city}`
+  );
+  const data = await res.json();
+
+  return {
+    props: {
+      hotels: data.hotels ? data.hotels : data.allhotels,
+    },
+  };
+}
 
 export default Hotels;

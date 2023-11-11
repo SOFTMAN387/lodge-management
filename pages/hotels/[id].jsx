@@ -1,11 +1,13 @@
 "use client";
 import Head from "next/head";
 import Image from "next/image";
-// import Cookies from "js-cookie";
+import Header1 from "@/components/Header1";
+import { useSelector } from "react-redux";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const SingleHotel = ({ hotel }) => {
+  const authUser= useSelector((state) => state.currentUser[0]) || [];
   const [auth, setAuth] = useState(false);
 
 //   useEffect(() => {
@@ -22,6 +24,7 @@ const SingleHotel = ({ hotel }) => {
       <Head>
         <title>{hotel?.name}</title>
       </Head>
+      <Header1 />
       <div className="w-7/12 mx-auto my-10 ">
         <Image
           src={hotel?.banner}
@@ -59,7 +62,7 @@ const SingleHotel = ({ hotel }) => {
                 })
               : ""}
           </ul>
-          {auth ? (
+          {/* {authUser?.token? (
             <Link href={`/payment/${hotel?._id}`}>
               <button className=" w-60 h-14 rounded-lg bg-red-400 my-5 text-lg">
                 Book Now
@@ -73,22 +76,36 @@ const SingleHotel = ({ hotel }) => {
               </Link>{" "}
               to get new Offers !
             </span>
+          )} */}
+          {authUser?.token? (
+            <Link href={`/orders/${hotel?._id}`}>
+              <button className=" w-60 h-14 rounded-lg bg-red-400 my-5 text-lg">
+                Book Now
+              </button>
+            </Link>
+          ) : (
+            <Link href={`/login`}>
+              <button className=" w-60 h-14 rounded-lg bg-red-400 my-5 text-lg">
+                Book Now
+              </button>
+            </Link>
           )}
+          
         </div>
       </div>
     </>
   );
 };
 
-// export async function getServerSideProps(ctx) {
-//   const res = await fetch(`${process.env.BASE_URL}/api/hotels/${ctx.query.id}`);
-//   const data = await res.json();
+export async function getServerSideProps(ctx) {
+  const res = await fetch(`${process.env.BASE_URL}/api/hotels/${ctx.query.id}`);
+  const data = await res.json();
 
-//   return {
-//     props: {
-//       hotel: data.hotel,
-//     },
-//   };
-// }
+  return {
+    props: {
+      hotel: data.hotel,
+    },
+  };
+}
 
 export default SingleHotel;

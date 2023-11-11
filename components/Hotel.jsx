@@ -6,7 +6,7 @@ const Hotel = ({ e }) => {
     <div className=" border-2 border-pink-500 rounded-lg h-96 w-full mb-5 p-5">
       <div className="flex">
         <Image
-          src="https://images.indianexpress.com/2021/06/Welcomhotel-Tavleen-Chail_1200.jpg"
+          src={e.banner}
           alt="hotel"
           width={200}
           height={200}
@@ -18,7 +18,7 @@ const Hotel = ({ e }) => {
                 return (
                   <Image
                     key={ele}
-                    src="https://images.indianexpress.com/2021/06/Welcomhotel-Tavleen-Chail_1200.jpg"
+                    src={ele}
                     alt="hotel"
                     width={200}
                     height={200}
@@ -61,7 +61,7 @@ const Hotel = ({ e }) => {
               Price : &#8377; {e?.price}
             </button>
             <Link
-              href={`/hotels/12`}
+              href={`/hotels/${e._id}`}
               className="text-xl font-bold text-red-600 ml-10"
             >
               See Details
