@@ -21,14 +21,14 @@ export default function Home() {
       <Header1 />
       <Header2 />
       <Header3 />
-      <div className="mx-20">
+      <div className="mx-50">
         <div className=" my-14">
           <Image
             src={"/banner1.avif"}
             alt="banner1"
             width={200}
             height={200}
-            className=" h-80 w-full"
+            className=" h-80 w-full "
           />
         </div>
         <div className="mb-14">
@@ -37,7 +37,7 @@ export default function Home() {
             alt="banner1"
             width={200}
             height={200}
-            className=" h-40 w-full"
+            className=" h-40 w-full "
           />
         </div>
         <Header4 />

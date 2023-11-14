@@ -57,8 +57,7 @@ const Hotels = ({ hotels,loc }) => {
   return (
     <>
       <Header1 />
-       <div className="grid grid-cols-12">
-        <div className=" col-span-3">
+      <div className="flex justify-center items-center w-full">
           <Filters
             price={price}
             setPrice={setPrice}
@@ -66,14 +65,17 @@ const Hotels = ({ hotels,loc }) => {
             handleSearch={handleSearch}     
             checkedList={checkedList}
           />
-        </div>
       
-        <div className="col-span-9 mt-2">
-        <span>Hotel Searched Founs ! {total}</span>
+       
+       </div>
+      
+    
+        <span className="text-center">Hotel Searched Founs ! {total}</span>
+        <hr/>
           {list?.length > 0
             ? list?.map((e) => {
                 return (
-                  <div className=" m-5 " key={e._id}>
+                  <div className="" key={e._id}>
                     <Hotel e={e} />
                   </div>
                 );
@@ -81,16 +83,16 @@ const Hotels = ({ hotels,loc }) => {
             : hotels
             ? hotels?.map((e) => {
                 return (
-                  <div className=" m-5 " key={e._id}>
+                  <div className="full " key={e._id}>
                     <Hotel e={e} />
                   </div>
                 );
               })
             : ""}
-        </div> 
-        <div>
-        </div>
-       </div> 
+     
+       
+    
+    
     </>
   );
 };

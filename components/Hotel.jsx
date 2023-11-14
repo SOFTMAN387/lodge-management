@@ -3,16 +3,18 @@ import Link from "next/link";
 
 const Hotel = ({ e }) => {
   return (
-    <div className=" border-2 border-pink-500 rounded-lg h-96 w-full mb-5 p-5">
-      <div className="flex">
-        <Image
+    <div className="rounded-lg h-auto justify-center items-center w-auto mb-5 p-5 border-b-2 border-full border-red-500 rounded-md m-5">
+      <div className="flex justify-center items-center">
+      <Image
           src={e.banner}
           alt="hotel"
-          width={200}
-          height={200}
-          className=" w-96 h-60 mr-3"
+          width={300}
+          height={300}
+          className=" w-96 h-60"
         />
-        <div className="flex flex-col justify-between">
+      </div>
+       
+        <div className="flex justify-center items-center gap-1">
           {e
             ? e.gallery?.map((ele) => {
                 return (
@@ -20,26 +22,26 @@ const Hotel = ({ e }) => {
                     key={ele}
                     src={ele}
                     alt="hotel"
-                    width={200}
+                    width={100}
                     height={200}
-                    className=" w-28 h-16 object-cover  "
+                    className=" w-20 h-16 object-cover m-2  "
                   />
                 );
               })
             : ""}
         </div>
-        <div className=" ml-20">
-          <h2 className="font-bold text-3xl line-clamp-1">{e?.name}</h2>
-          <p className=" text-justify my-5 text-lg">{e?.description}</p>
-          <div className=" text-2xl my-5">
+        <div className=" ml-20 flex justify-center items-center flex-col md:text-xl sm:text-xl">
+          <h2 className="font-bold text-xl  line-clamp-1">{e?.name}</h2>
+          <p className=" text-justify text-lg">{e?.description}</p>
+          <div className=" text-xl ">
             <span className=" font-bold">Facilities : </span>
-            <ul className=" flex">
+            <ul className=" flex flex-col  lg:flex-row ">
               {e
                 ? e.facilities?.map((ele) => {
                     return (
                       <li
                         key={ele.name}
-                        className=" mr-10 mb-3 flex items-center"
+                        className=" mb-3 flex items-center"
                       >
                         <span>
                           <Image
@@ -62,14 +64,13 @@ const Hotel = ({ e }) => {
             </button>
             <Link
               href={`/hotels/${e._id}`}
-              className="text-xl font-bold text-red-600 ml-10"
+              className=" font-bold text-red-600 ml-10"
             >
               See Details
             </Link>
           </div>
         </div>
       </div>
-    </div>
   );
 };
 

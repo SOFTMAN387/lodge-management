@@ -16,7 +16,7 @@ const Header1 = () => {
     router.push("/login");
   };
   return (
-    <div className=" flex justify-between border-b-2 border-gray-300 items-center h-24 px-10">
+    <div className=" flex justify-between border-b-2 border-gray-300 items-center h-24 px-10 w-full">
     <Link href={"/"}>
     <Image
         src={"/logo.png"}
@@ -26,7 +26,7 @@ const Header1 = () => {
         className=" w-28 h-28 "
       />
     </Link>
-      <div className=" h-full flex">
+      {/* <div className=" h-full flex md:hidden sm:hidden">
         <Block title={"Become a member"} para={"Additional 0% off on stays."} />
         <Block
           title={"OYO for business"}
@@ -42,7 +42,12 @@ const Header1 = () => {
             height={200}
             className=" w-10 h-10 rounded-full mr-5"
           />
-          {authUser?.token ? (
+        
+          
+        </div>
+      
+      </div> */}
+      {authUser?.token ? (
             <h3
             className=" ml-1 border-b-2 border-red-500 text-red-600 pb-1 hover:cursor-pointer font-bold"
               onClick={handleLogout}
@@ -54,9 +59,6 @@ const Header1 = () => {
               Login / Signup
             </Link>
           )}
-          
-        </div>
-      </div>
     </div>
   );
 };

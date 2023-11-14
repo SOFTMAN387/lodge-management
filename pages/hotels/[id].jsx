@@ -4,20 +4,12 @@ import Image from "next/image";
 import Header1 from "@/components/Header1";
 import { useSelector } from "react-redux";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+
 
 const SingleHotel = ({ hotel }) => {
   const authUser= useSelector((state) => state.currentUser[0]) || [];
-  const [auth, setAuth] = useState(false);
+  console.log(hotel);
 
-//   useEffect(() => {
-//     const cookie = Cookies.get("user");
-//     if (cookie) {
-//       setAuth(true);
-//       return;
-//     }
-//     setAuth(false);
-//   }, []);
 
   return (
     <>
@@ -40,7 +32,7 @@ const SingleHotel = ({ hotel }) => {
             Price : &#8377; {hotel?.price}
           </button>
           <p className=" text-3xl font-bold my-5">Facilities : </p>
-          <ul className=" flex text-xl justify-between">
+          <ul className=" flex text-xl justify-between flex-col  lg:flex-row">
             {hotel
               ? hotel.facilities?.map((ele) => {
                   return (
@@ -62,21 +54,7 @@ const SingleHotel = ({ hotel }) => {
                 })
               : ""}
           </ul>
-          {/* {authUser?.token? (
-            <Link href={`/payment/${hotel?._id}`}>
-              <button className=" w-60 h-14 rounded-lg bg-red-400 my-5 text-lg">
-                Book Now
-              </button>
-            </Link>
-          ) : (
-            <span className=" text-2xl">
-              Please{" "}
-              <Link href={"/login"} className=" text-blue-500">
-                Log in
-              </Link>{" "}
-              to get new Offers !
-            </span>
-          )} */}
+
           {authUser?.token? (
             <Link href={`/orders/${hotel?._id}`}>
               <button className=" w-60 h-14 rounded-lg bg-red-400 my-5 text-lg">

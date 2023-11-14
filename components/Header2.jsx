@@ -18,7 +18,7 @@ const Header2 = () => {
     ];
     return (
       <div>
-        <div className="flex px-10 py-3 bg-gray-100 justify-between w-full">
+        <div className="flex px-5  py-3 bg-gray-100 justify-between w-full">
           {
               List.map((e)=>{
                   return(

@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useRouter } from "next/router"
 import StripeCheckout from 'react-stripe-checkout';
+import axios from 'axios';
 // import Link from 'next/link';
 
 const Order = ({hotel}) => {
@@ -32,21 +33,38 @@ const Order = ({hotel}) => {
       }
       
     } 
-   
-  const onToken = (token,shippingAddress) => {
-   
+
+    
+  const orderNow=async()=>{
     try {
-      setOrderData({...orderData,token,shippingAddress,userId:authUserId});
-       alert("Payment Successfull !"); 
-       router.push(`/ordered/${authUserId}`);
+      const res = await axios.post(`/api/orders/`, orderData);
+      if (res?.data) {
+       router.push(`/ordered/${authUserId}`); 
+      }    
+    } catch (error) {
+      alert("Payment Failed !"); 
+      router.back();
+      console.log(error);
+    }
+  }
+ 
+  const onToken = async(token,shippingAddress) => {
+    try {
+      if(token){
+        setOrderData({...orderData,token,totalAmount:hotel?.price,shippingAddress,userId:authUserId,userHoteldata:hotel});
+        alert("Payment Successfull !");   
+      }
     } catch (error) {
       console.log(error);
     }
-   
-
-    // console.log(token);
-    // console.log(shippingAddress);
   };
+
+  if(orderData.token){
+    orderNow();
+    
+  }
+
+  
   console.log(orderData);
   return (
    <>
@@ -82,40 +100,41 @@ const Order = ({hotel}) => {
         <h2 className=" text-4xl text-white text-center font-bold">
          Book room by selecting gender with availaibility...
         </h2>
-        <div className='flex justify-center items-center mt-5'>  
+        <div className='flex justify-center items-center mt-5 sm:w-auto'>  
           <input
             type="date"
             placeholder="From Date..."
            onChange={handleChange}
             name="bookingDate"
-            className="  h-16  outline-none px-3 text-lg border-r-2 border-gray-400 col-span-1"
+            className="  h-16  outline-none px-1 text-lg border-r-2 border-gray-400 col-span-1"
 
           />
+          <br/>
           <input
             type="date"
             placeholder="To Date..."
            onChange={handleChange}
             name='leavingDate'
-            className=" h-16  outline-none px-3 text-lg col-span-1"
+            className=" h-16  outline-none px-1 text-lg col-span-1"
           />
-          <span className='m-2 text-bold text-white'>Male:</span>
-          <select className=" h-16  px-3 py-2 w-30  bg-red-400 hover:cursor-pointer hover:bg-red-600 text-white text-xl"
+          <span className='m-1 text-bold text-white'>Male:</span>
+          <select className=" h-16  px-3 py-2 w-20  bg-red-400 hover:cursor-pointer hover:bg-red-600 text-white text-xl"
          onChange={handleChange}
          name='male'>         
             <option>0</option>
             <option>1</option>
             <option>2</option>
           </select>
-          <span className='m-2 text-bold text-white'>Female:</span>
-          <select className=" h-16  px-3 py-2 w-30  bg-red-400 hover:cursor-pointer hover:bg-red-600 text-white text-xl"
+          <span className='m-1 text-bold text-white'>Female:</span>
+          <select className=" h-16  px-3 py-2 w-20  bg-red-400 hover:cursor-pointer hover:bg-red-600 text-white text-xl"
          onChange={handleChange}
          name='female'>          
             <option>0</option>
             <option>1</option>
             <option>2</option>
           </select>
-          <span className='m-2 text-bold text-white'>Child:</span>
-          <select className=" h-16  px-3 py-2 w-30  bg-red-400 hover:cursor-pointer hover:bg-red-600 text-white text-xl"
+          <span className='m-1 text-bold text-white'>Child:</span>
+          <select className=" h-16  px-3 py-2 w-20  bg-red-400 hover:cursor-pointer hover:bg-red-600 text-white text-xl"
          onChange={handleChange}
          name='child'>
             <option>0</option>
@@ -141,7 +160,7 @@ const Order = ({hotel}) => {
         </div>
       </div>
     </div>
-    {verify===true?( <StripeCheckout
+    {verify===true?(<StripeCheckout
               
               name="Er. Manish Gupta"
               description={`total pay ₹ ${hotel.price}`}
