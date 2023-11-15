@@ -11,7 +11,7 @@ const Filters = ({
     console.log(checkedList);
   return (
     <>
-      <div className=" border-2 border-red-500 rounded-md m-5 w-auto py-5 px-2">
+      <div className=" lg:flex border-2 border-red-500 rounded-md m-5 w-auto py-5 px-2">
         <label htmlFor="price" className=" text-xl mr-3 font-bold">
           Price :{" "}
         </label>

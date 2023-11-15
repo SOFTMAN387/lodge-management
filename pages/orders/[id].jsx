@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { useRouter } from "next/router"
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
+import Footer from '@/components/Footer';
 // import Link from 'next/link';
 
 const Order = ({hotel}) => {
@@ -95,12 +96,12 @@ const Order = ({hotel}) => {
     </div>
   </div>
 </div>
- <div className=" bg-gradient-to-r from-pink-600 to-red-400 h-60 w-100 ">
-      <div className=" p-5">
-        <h2 className=" text-4xl text-white text-center font-bold">
+ <div className=" bg-gradient-to-r from-pink-600 to-red-400 h-60  w-100 ">
+      <div className=" p-5 sm:h-80">
+        <h2 className=" text-3xl text-white text-center font-bold">
          Book room by selecting gender with availaibility...
         </h2>
-        <div className='flex justify-center items-center mt-5 sm:w-auto'>  
+        <div className='flex justify-center items-center mt-5 sm:w-full'>  
           <input
             type="date"
             placeholder="From Date..."
@@ -117,26 +118,29 @@ const Order = ({hotel}) => {
             name='leavingDate'
             className=" h-16  outline-none px-1 text-lg col-span-1"
           />
-          <span className='m-1 text-bold text-white'>Male:</span>
+          
           <select className=" h-16  px-3 py-2 w-20  bg-red-400 hover:cursor-pointer hover:bg-red-600 text-white text-xl"
          onChange={handleChange}
          name='male'>         
+            <option disabled>Male</option>
             <option>0</option>
             <option>1</option>
             <option>2</option>
           </select>
-          <span className='m-1 text-bold text-white'>Female:</span>
+         
           <select className=" h-16  px-3 py-2 w-20  bg-red-400 hover:cursor-pointer hover:bg-red-600 text-white text-xl"
          onChange={handleChange}
          name='female'>          
+            <option disabled>Female</option>
             <option>0</option>
             <option>1</option>
             <option>2</option>
           </select>
-          <span className='m-1 text-bold text-white'>Child:</span>
+         
           <select className=" h-16  px-3 py-2 w-20  bg-red-400 hover:cursor-pointer hover:bg-red-600 text-white text-xl"
          onChange={handleChange}
          name='child'>
+            <option disabled>Child</option>
             <option>0</option>
             <option>1</option>
             <option>2</option>
@@ -179,6 +183,7 @@ const Order = ({hotel}) => {
   </div>
 
 </div>
+<Footer />
   </> )
    }
 

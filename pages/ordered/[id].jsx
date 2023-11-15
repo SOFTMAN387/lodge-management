@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import React from 'react'
 import Header1 from '@/components/Header1';
+import Footer from '@/components/Footer';
 
 const userOrdered = ({order}) => {
   return (
@@ -132,6 +133,7 @@ const userOrdered = ({order}) => {
     </>)}
 
 </div>
+<Footer/>
   </>
   )
 }

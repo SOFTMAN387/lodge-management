@@ -4,6 +4,7 @@ import Image from "next/image";
 import Header1 from "@/components/Header1";
 import { useSelector } from "react-redux";
 import Link from "next/link";
+import Footer from "@/components/Footer";
 
 
 const SingleHotel = ({ hotel }) => {
@@ -71,6 +72,7 @@ const SingleHotel = ({ hotel }) => {
           
         </div>
       </div>
+      <Footer />
     </>
   );
 };

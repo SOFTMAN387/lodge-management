@@ -6,10 +6,11 @@ import Header3 from '@/components/Header3';
 import Header4 from '@/components/Header4';
 import Footer from '@/components/Footer';
 import Head from "next/head";
+import Hotel from '@/components/Hotel';
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+export default function Home({hotels}) {
   return (
   <>
   <div>
@@ -17,7 +18,7 @@ export default function Home() {
         <title>
           OYO : India`s Best Online Hotel Booking Site For Sanitized Stay.
         </title>
-      </Head>
+   </Head>
       <Header1 />
       <Header2 />
       <Header3 />
@@ -42,9 +43,32 @@ export default function Home() {
         </div>
         <Header4 />
       </div>
+      <div className="grid lg:grid-cols-2">
+       {hotels?.map((e) => {
+                return (
+                  <div  key={e._id}>
+                    <Hotel  e={e} />
+                  </div>
+                );
+              })}
+      </div>
       <Footer />
     </div>
   
     </>
   )
+}
+
+
+export async function getServerSideProps() {
+  const res = await fetch(
+    `${process.env.BASE_URL}/api/hotels/`
+  );
+  const data = await res.json();
+
+  return {
+    props: {
+      hotels:data.allhotels||null,
+    },
+  };
 }

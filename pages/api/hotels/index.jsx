@@ -14,11 +14,12 @@ export default async function handler(req, res) {
     const hotels = await Hotel.find({location:req.query.city});
     if (hotels.length > 0) {
       return res.status(200).json({ msg: "Good", hotels });
+    }else{
+      const allhotels = await Hotel.find({});
+      return res.status(200).json({ msg: "Good", allhotels });
     }
-    const allhotels = await Hotel.find({});
-    return res.status(200).json({ msg: "Good", allhotels });
   }
-    
+
   } catch (error) {
     return res.status(500).json({ msg:error });
   }

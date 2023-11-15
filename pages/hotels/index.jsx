@@ -2,8 +2,8 @@ import Header1 from "@/components/Header1";
 import Hotel from "@/components/Hotel";
 import Filters from "@/components/Filter";
 import axios from "axios";
-import { useEffect, useState } from "react";
-import connectDB from "@/mongoDB/connectdb";
+import {useState } from "react";
+import Footer from "@/components/Footer";
 
 const Hotels = ({ hotels,loc }) => {
   const[price,setPrice]=useState(0);
@@ -57,7 +57,7 @@ const Hotels = ({ hotels,loc }) => {
   return (
     <>
       <Header1 />
-      <div className="flex justify-center items-center w-full">
+      <div className="lg:flex  justify-center items-center w-full">
           <Filters
             price={price}
             setPrice={setPrice}
@@ -68,31 +68,28 @@ const Hotels = ({ hotels,loc }) => {
       
        
        </div>
-      
-    
-        <span className="text-center">Hotel Searched Founs ! {total}</span>
+       <span className="flex text-center justify-center items-center">Hotel Searched Founs ! {total}</span>
         <hr/>
-          {list?.length > 0
+        <div className="grid lg:grid-cols-2 ">
+        {list?.length > 0
             ? list?.map((e) => {
                 return (
-                  <div className="" key={e._id}>
-                    <Hotel e={e} />
+                  <div  key={e._id}>
+                    <Hotel  e={e} />
                   </div>
                 );
               })
             : hotels
             ? hotels?.map((e) => {
                 return (
-                  <div className="full " key={e._id}>
-                    <Hotel e={e} />
+                  <div  key={e._id}>
+                    <Hotel  e={e} />
                   </div>
                 );
               })
             : ""}
-     
-       
-    
-    
+        </div>
+      <Footer />
     </>
   );
 };

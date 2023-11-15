@@ -11,6 +11,7 @@ const Header1 = () => {
   const dispatch=useDispatch();
   const authUser= useSelector((state) => state.currentUser[0]) || [];
 
+
   const handleLogout = () => {
     dispatch(actions.logoutUser());
     router.push("/login");
@@ -47,13 +48,19 @@ const Header1 = () => {
         </div>
       
       </div> */}
+     
       {authUser?.token ? (
+        <>
+          <Link href={`/ordered/${authUser?.emailExists?._id}`}  className=" ml-1 border-b-2  pb-1 hover:cursor-pointer font-bold">
+              Your Hotel
+        </Link>
             <h3
             className=" ml-1 border-b-2 border-red-500 text-red-600 pb-1 hover:cursor-pointer font-bold"
               onClick={handleLogout}
             >
               Logout
             </h3>
+            </>
           ) : (
             <Link href={"/login"}  className=" ml-1 border-b-2  pb-1 hover:cursor-pointer font-bold">
               Login / Signup
