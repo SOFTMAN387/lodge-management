@@ -1,8 +1,12 @@
 import React from 'react'
-
+import AdminCard from '@/components/AdminCard'
+import UserLists from '@/components/UserLists'
 const Admin = () => {
   return (
-    <div>Admin</div>
+  <>
+  <AdminCard/>
+  <UserLists />
+  </>
   )
 }
 
