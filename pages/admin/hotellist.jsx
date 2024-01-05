@@ -5,10 +5,10 @@ const hotellist = ({hotels}) => {
   return (
    <>
     <AdminCard />
+    <span className='w-40 ml-2 mt-5 h-14'>Total Hotels {hotels?.length}</span>
       <div className='text-right m-2'>
       <button className=" w-40 text-white h-14 rounded-lg bg-blue-400 text-lg">
-        Add New
-             
+        Add New        
     </button>
       </div>
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
