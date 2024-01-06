@@ -10,7 +10,6 @@ export default async function handler(req,res){
                 res.status(200).json({msg:"Good" , order});
             }
         }
-        
     } catch (error) {
         res.status(500).json({msg:error});
     }

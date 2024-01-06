@@ -1,7 +1,30 @@
 import React from 'react'
 import AdminCard from '@/components/AdminCard';
 import Image from "next/image";
+import { useRouter } from "next/router";
+import axios from "axios";
+// import { redirect } from 'next/navigation'
 const orderslist = ({orders}) => {
+  const router = useRouter();
+  const DeleteOrder=async(id)=>{
+    confirm(`Deleted Id${id}`)
+    try {
+      const DeleteOrder=await axios.delete(`/api/orders/orderslist`,{
+        data:{
+          "id":id,
+        }    
+      });
+      console.log(DeleteOrder);
+      if(DeleteOrder.status===200){
+        router.push("/admin/orderslist");
+        // redirect('/admin/');
+      }
+    } catch (error) {
+      console.log(error);
+    }
+
+
+  }
   return (
    <>
    <AdminCard />
@@ -86,22 +109,10 @@ const orderslist = ({orders}) => {
                         
                     </div>
                 </td>
-                <td className="px-6 py-4 flex text-center align-center mt-2 ">
-                        <a href="#" className="font-medium text-red-600 dark:text-green-500 hover:underline">Edit</a>
-                        <a href="#" className="font-medium ml-2 text-red-600 dark:text-red-500 hover:underline">Delete</a>
+                <td className="px-6 py-4  ">
+                        <a href="#"  className="font-medium text-red-600 dark:text-green-500 hover:underline">Edit</a>
+                        <a href="#" onClick={()=>DeleteOrder(e?._id)} className="font-medium ml-2 text-red-600 dark:text-red-500 hover:underline">Delete</a>
                  </td>
-
-                    {/* 
-                    <td className="px-6 py-4 font-semibold text-gray-900 ">
-                       {e?.name}
-                    </td>
-                    <td className="px-6 py-4 font-semibold text-gray-900 ">
-                    &#8377; {e?.price}
-                    </td>
-                    <td className="px-6 py-4 flex text-center align-center mt-2 ">
-                        <a href="#" className="font-medium text-red-600 dark:text-green-500 hover:underline">Edit</a>
-                        <a href="#" className="font-medium ml-2 text-red-600 dark:text-red-500 hover:underline">Delete</a>
-                    </td> */}
                 </tr>
                 );
               })}

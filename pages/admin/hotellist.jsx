@@ -1,7 +1,30 @@
 import React from 'react'
 import AdminCard from '@/components/AdminCard';
 import Image from "next/image";
+import { useRouter } from "next/router";
+import axios from "axios";
 const hotellist = ({hotels}) => {
+
+  const router = useRouter();
+  const DeleteHotel=async(id)=>{
+    confirm(`Deleted Id${id}`);
+    try {
+      const DeleteHotel=await axios.delete(`/api/hotels/`,{
+        data:{
+          "id":id,
+        }    
+      });
+      console.log(DeleteHotel);
+      if(DeleteHotel.status===200){
+        router.push("/admin/orderslist");
+        // redirect('/admin/');
+      }
+    } catch (error) {
+      console.log(error);
+    }
+
+
+  }
   return (
    <>
     <AdminCard />
@@ -53,7 +76,7 @@ const hotellist = ({hotels}) => {
                     </td>
                     <td className="px-6 py-4 flex text-center align-center mt-2 ">
                         <a href="#" className="font-medium text-red-600 dark:text-green-500 hover:underline">Edit</a>
-                        <a href="#" className="font-medium ml-2 text-red-600 dark:text-red-500 hover:underline">Delete</a>
+                        <a href="#" onClick={()=>DeleteHotel(e?._id)} className="font-medium ml-2 text-red-600 dark:text-red-500 hover:underline">Delete</a>
                     </td>
                 </tr>
                 );
