@@ -66,6 +66,9 @@ const orderslist = ({orders}) => {
                    Availability
                 </th>
                 <th scope="col" className="px-6 py-3">
+                   Status
+                </th>
+                <th scope="col" className="px-6 py-3">
                     Action
                 </th>
             </tr>
@@ -110,7 +113,11 @@ const orderslist = ({orders}) => {
                     </div>
                 </td>
                 <td className="px-6 py-4  ">
-                        <a href="#"  className="font-medium text-red-600 dark:text-green-500 hover:underline">Edit</a>
+                        <span   className=" border-b  p-2 b-2 border-orange-500 font-medium text-orange-600 dark:text-orange-700 ">Pending...</span>
+                        <span className="font-medium ml-2 border bg-green-400 border-1 p-2 border-white dark:border-gray-800 button border-dark  dark:text-white   hover:cursor-pointer">Confirm</span>
+                       
+                 </td>
+                <td className="px-6 py-4  ">
                         <a href="#" onClick={()=>DeleteOrder(e?._id)} className="font-medium ml-2 text-red-600 dark:text-red-500 hover:underline">Delete</a>
                  </td>
                 </tr>

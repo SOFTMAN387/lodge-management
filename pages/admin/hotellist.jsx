@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { use } from 'react'
 import AdminCard from '@/components/AdminCard';
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { useState } from 'react';
 import axios from "axios";
+import AddProducts from '@/components/modals/AddProducts';
+import EditProducts from '@/components/modals/EditProducts';
 const hotellist = ({hotels}) => {
+  const[PrdctToggle,setPrdctToggle]=useState(false);
+  const[EditToggle,setEditToggle]=useState(false);
 
   const router = useRouter();
   const DeleteHotel=async(id)=>{
@@ -28,9 +33,22 @@ const hotellist = ({hotels}) => {
   return (
    <>
     <AdminCard />
+
+    {/* Add Product Modal starts */}
+    <div className='flex justify-center items-center w-full mt-5'>
+    {PrdctToggle===true && <AddProducts setPrdctToggle={setPrdctToggle}/>}
+    </div>
+     {/* Add Product Modal ends */}
+     
+    {/* Edit Product Modal starts */}
+    <div className='flex justify-center items-center w-full mt-5'>
+    {EditToggle===true && <EditProducts setEditToggle={setEditToggle}/>}
+    </div>
+     {/* Edit Product Modal ends */}
+   
     <span className='w-40 ml-2 mt-5 h-14'>Total Hotels {hotels?.length}</span>
       <div className='text-right m-2'>
-      <button className=" w-40 text-white h-14 rounded-lg bg-blue-400 text-lg">
+      <button onClick={()=>setPrdctToggle(true)} className=" w-40 text-white h-14 rounded-lg bg-blue-400 text-lg">
         Add New        
     </button>
       </div>
@@ -75,7 +93,7 @@ const hotellist = ({hotels}) => {
                     &#8377; {e?.price}
                     </td>
                     <td className="px-6 py-4 flex text-center align-center mt-2 ">
-                        <a href="#" className="font-medium text-red-600 dark:text-green-500 hover:underline">Edit</a>
+                        <a href="#" onClick={()=>setEditToggle(true)} className="font-medium text-red-600 dark:text-green-500 hover:underline">Edit</a>
                         <a href="#" onClick={()=>DeleteHotel(e?._id)} className="font-medium ml-2 text-red-600 dark:text-red-500 hover:underline">Delete</a>
                     </td>
                 </tr>
