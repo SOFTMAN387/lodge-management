@@ -3,7 +3,9 @@ import Link from "next/link";
 
 const Hotel = ({ e }) => {
   return (
-    <div className=" rounded-lg h-auto sm:w-auto justify-center items-center  border-2 border-full border-red-500 rounded-md m-5">
+  
+    <div className={`${e?.availability===false?"rounded-lg h-auto sm:w-auto justify-center opacity-50 items-center bg-gray-300 border-2 border-full border-red-500 rounded-md m-5":
+    "rounded-lg h-auto sm:w-auto justify-center items-center  border-2 border-full border-red-500 rounded-md m-5"}`}>
       <div className="flex justify-center items-center">
       <Image
           src={e.banner}
@@ -62,14 +64,24 @@ const Hotel = ({ e }) => {
             <button className=" w-40 text-white h-14 rounded-lg bg-blue-400 text-lg">
               Price : &#8377; {e?.price}
             </button>
+            {e?.availability===true?(
+               <button className="flex items-center border border-blue-600 border-3 rounded p-3 m-2">
+               <Link
+                 href={`/hotels/${e._id}`}
+                 className=" font-bold text-blue-600 "
+               >
+                 See Details
+               </Link>
+               </button>
+            ):
             <button className="flex items-center border border-red-600 border-3 rounded p-3 m-2">
-            <Link
-              href={`/hotels/${e._id}`}
+            <span
               className=" font-bold text-red-600 "
             >
-              See Details
-            </Link>
-            </button>
+             Not Available !
+            </span>
+            </button>}
+           
            
           </div>
         </div>

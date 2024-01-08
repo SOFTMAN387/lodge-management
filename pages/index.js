@@ -11,6 +11,7 @@ import Hotel from '@/components/Hotel';
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home({hotels}) {
+  console.log(hotels);
   return (
   <>
   <div>
@@ -62,7 +63,9 @@ export default function Home({hotels}) {
 
 export async function getServerSideProps() {
   const res = await fetch(
-    `${process.env.BASE_URL}/api/hotels/`
+    `${process.env.BASE_URL}/api/hotels/`,{
+      method:"GET",
+    }
   );
   const data = await res.json();
 

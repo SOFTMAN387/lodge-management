@@ -12,16 +12,16 @@ const hotellist = ({hotels}) => {
 
   const router = useRouter();
   const DeleteHotel=async(id)=>{
-    confirm(`Deleted Id${id}`);
+    confirm(`Deleted Id${id}`)
     try {
-      const DeleteHotel=await axios.delete(`/api/hotels/`,{
+      const DeleteHotel=await axios.delete(`/api/hotels/delete`,{
         data:{
           "id":id,
         }    
       });
       console.log(DeleteHotel);
       if(DeleteHotel.status===200){
-        router.push("/admin/orderslist");
+        router.push("/admin/hotellist");
         // redirect('/admin/');
       }
     } catch (error) {

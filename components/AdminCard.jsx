@@ -4,7 +4,8 @@ const AdminCard = () => {
   return (
    <>
     <div className='text-center mt-2'>
-    <h1 className="font-bold text-xl  line-clamp-1">Admin Dashboard</h1>
+      <Link href="/"><h1 className="font-bold text-xl  line-clamp-1">Admin Dashboard</h1></Link>
+    
   </div>
    <div className="grid sm:grid-cols-3">
        <div className=" rounded-lg h-auto bg-red-300 sm:w-auto justify-center items-center cursor-pointer border-2 border-full border-red-500 rounded-md m-5">
