@@ -7,7 +7,7 @@ const UserLists = ({users}) => {
 <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
         <div className='text-right m-2'>
             <button className=" w-40 text-white h-14 rounded-lg bg-blue-400 text-lg">
-               Total Users {users.length}
+               Total Users {users?.length}
             </button>
       </div>
    

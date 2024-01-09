@@ -7,11 +7,7 @@ import Header4 from '@/components/Header4';
 import Footer from '@/components/Footer';
 import Head from "next/head";
 import Hotel from '@/components/Hotel';
-
-const inter = Inter({ subsets: ['latin'] })
-
 export default function Home({hotels}) {
-  console.log(hotels);
   return (
   <>
   <div>
