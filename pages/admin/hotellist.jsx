@@ -9,18 +9,36 @@ import EditProducts from '@/components/modals/EditProducts';
 const hotellist = ({hotels}) => {
   const[PrdctToggle,setPrdctToggle]=useState(false);
   const[EditToggle,setEditToggle]=useState(false);
+  const[HotelIdData,setHotelIdData]=useState({});
 
   const router = useRouter();
+
+
+  const EditHotel=async(id)=>{
+    try {
+      // console.log(id);
+      if(id){
+        const FetchHotelById=await axios.get(`/api/hotels/${id}`);
+        setHotelIdData(FetchHotelById?.data?.hotel);
+        setEditToggle(true);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+
   const DeleteHotel=async(id)=>{
-    confirm(`Deleted Id${id}`)
+   
     try {
       const DeleteHotel=await axios.delete(`/api/hotels/delete`,{
         data:{
           "id":id,
         }    
       });
-      console.log(DeleteHotel);
+      // console.log(DeleteHotel);
       if(DeleteHotel.status===200){
+        alert(`Deleted Id${id}`);
         router.push("/admin/hotellist");
         // redirect('/admin/');
       }
@@ -42,7 +60,7 @@ const hotellist = ({hotels}) => {
      
     {/* Edit Product Modal starts */}
     <div className='flex justify-center items-center w-full mt-5'>
-    {EditToggle===true && <EditProducts setEditToggle={setEditToggle}/>}
+    {EditToggle===true && <EditProducts setEditToggle={setEditToggle} HotelIdData={HotelIdData}/>}
     </div>
      {/* Edit Product Modal ends */}
    
@@ -93,7 +111,7 @@ const hotellist = ({hotels}) => {
                     &#8377; {e?.price}
                     </td>
                     <td className="px-6 py-4 flex text-center align-center mt-2 ">
-                        <a href="#" onClick={()=>setEditToggle(true)} className="font-medium text-red-600 dark:text-green-500 hover:underline">Edit</a>
+                        <a href="#" onClick={()=>EditHotel(e?._id)} className="font-medium text-red-600 dark:text-green-500 hover:underline">Edit</a>
                         <a href="#" onClick={()=>DeleteHotel(e?._id)} className="font-medium ml-2 text-red-600 dark:text-red-500 hover:underline">Delete</a>
                     </td>
                 </tr>

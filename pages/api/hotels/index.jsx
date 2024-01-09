@@ -5,9 +5,9 @@ export default async function handler(req, res) {
   try {
     connectDB();
     if (req.method === "POST") {
-      const newHotel = new Hotel(req.body);
+      const newHotel = new Hotel(req.body,{new:true});
       const result = await newHotel.save();
-      res.status(201).json({ msg: "Hotel added !", result },{new:true});
+      res.status(201).json({ msg: "Hotel added !", result });
     }
 
   if (req.method === "GET") {

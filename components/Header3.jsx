@@ -10,6 +10,7 @@ const Header3 = () => {
   return (
     <div className=" bg-gradient-to-r from-pink-600 to-red-400 h-85 w-100 items-center">
       <div className=" p-5">
+        <form>
         <h2 className=" text-4xl text-white text-center font-bold">
           Over 10,000 hotels and homes across India
         </h2>
@@ -18,7 +19,7 @@ const Header3 = () => {
             type="text"
             placeholder="Search..."
             className=" w-12/12  h-16 outline-none px-3 text-lg border-r-2 border-gray-400 "
-            required="required"
+            required="true"
             onChange={(e) => {
               setCity(e.target.value);
             }}
@@ -55,6 +56,7 @@ const Header3 = () => {
             Homestay in India 
           </button>
         </div>
+        </form>
       </div>
     </div>
   );
