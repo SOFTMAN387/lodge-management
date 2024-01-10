@@ -4,12 +4,13 @@ import Hotel from "@/models/hotels/hotel-model";
 export default async function handler(req, res) {
   try {
     connectDB();
+    //Creating New Hotel=======================
     if (req.method === "POST") {
       const newHotel = new Hotel(req.body,{new:true});
       const result = await newHotel.save();
       res.status(201).json({ msg: "Hotel added !", result });
     }
-
+  //Fetching Hotel=======================
   if (req.method === "GET") {
     if(req.query.city){
       const hotels = await Hotel.find({location:req.query.city});
@@ -19,6 +20,7 @@ export default async function handler(req, res) {
       return res.status(200).json({ msg: "Good", allhotels });
     }
   }
+    //Deleting Hotel=======================
   if(req.method==="DELETE"){
     const {id}=req.body;
      if(id){
@@ -28,8 +30,6 @@ export default async function handler(req, res) {
      return res.status(200).json({ msg: "No Hotel Deleted !" });
      }
  }
- 
-
 
   } catch (error) {
     return res.status(500).json({ msg:error });
