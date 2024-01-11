@@ -17,7 +17,7 @@ const Order = ({hotel}) => {
     "female":"",
     "child":"",
     "bookingDate":"",
-    "leavingDate":""
+    "leavingDate":"",
   });
 
 
@@ -40,6 +40,7 @@ const Order = ({hotel}) => {
     try {
       const res = await axios.post(`/api/orders/`, orderData);
       if (res?.data) {
+        // console.log(res.data);
        router.push(`/ordered/${authUserId}`); 
       }    
     } catch (error) {
@@ -64,9 +65,6 @@ const Order = ({hotel}) => {
     orderNow();
     
   }
-
-  
-  console.log(orderData);
   return (
    <>
    <Header1/>   

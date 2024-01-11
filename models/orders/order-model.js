@@ -43,6 +43,10 @@ const orderSchema = new mongoose.Schema(
     userHoteldata:{
       type:Object,
       required:true,
+    },
+    userOrderStatus:{
+      type:String,
+      default:"pending"
   }
   },
   { timestamps: true }

@@ -6,8 +6,27 @@ import axios from "axios";
 // import { redirect } from 'next/navigation'
 const orderslist = ({orders}) => {
   const router = useRouter();
+
+
+  const UpdateOrderStatus=async(id)=>{
+    try {
+      const UpdateOrder=await axios.patch(`/api/orders/${id}`,{
+        "userOrderStatus":"confirm"
+      });
+      console.log(UpdateOrder);
+      if(UpdateOrder.status===200){
+        alert("Status Updated Successful !")
+        router.push("/admin/orderslist");
+        // redirect('/admin/');
+      }
+    } catch (error) {
+      console.log(error);
+    }
+
+
+  }
+
   const DeleteOrder=async(id)=>{
-    confirm(`Deleted Id${id}`)
     try {
       const DeleteOrder=await axios.delete(`/api/orders/orderslist`,{
         data:{
@@ -16,6 +35,7 @@ const orderslist = ({orders}) => {
       });
       console.log(DeleteOrder);
       if(DeleteOrder.status===200){
+        alert(`Deleted Id${id}`)
         router.push("/admin/orderslist");
         // redirect('/admin/');
       }
@@ -85,7 +105,7 @@ const orderslist = ({orders}) => {
                         ...{e?.userId?.slice(-5)}
                     </td>
                     <td  className="px-6 py-4 font-semibold text-gray-900 ">
-                        ...{e?.userHoteldata?._id.slice(-5)}
+                        ...{e?.userHoteldata?._id?.slice(-5)}
                     </td>
                     <td className="p-4">
                         <Image src={e?.userHoteldata?.banner} className="w-16 md:w-32 max-w-full max-h-full" 
@@ -113,8 +133,13 @@ const orderslist = ({orders}) => {
                     </div>
                 </td>
                 <td className="px-6 py-4  ">
-                        <span   className=" border-b  p-2 b-2 border-orange-500 font-medium text-orange-600 dark:text-orange-700 ">Pending...</span>
-                        <span className="font-medium ml-2 border bg-green-400 border-1 p-2 border-white dark:border-gray-800 button border-dark  dark:text-white   hover:cursor-pointer">Confirm</span>
+                {(e?.userOrderStatus)==="pending"?<div>
+                <span   className=" border-b  p-2 b-2 border-orange-500 font-medium text-orange-600 dark:text-orange-700 ">Pending...</span>
+                <span className="font-medium ml-2 border bg-green-400 border-1 p-2 border-white dark:border-gray-800 button border-dark  dark:text-white   hover:cursor-pointer" onClick={()=>UpdateOrderStatus(e?._id)}>Confirm</span>
+                </div> 
+                
+                :<span className="font-medium ml-2 border bg-teal-400 border-1 p-2 border-white dark:border-gray-800 button border-dark  dark:text-white   hover:cursor-pointer">Confirmed</span>}
+                        
                        
                  </td>
                 <td className="px-6 py-4  ">
