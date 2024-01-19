@@ -27,6 +27,9 @@ const UserLists = ({users}) => {
                   Password
                 </th>
                 <th scope="col" className="px-6 py-3">
+                    Role
+                </th>
+                <th scope="col" className="px-6 py-3">
                     Status
                 </th>
             </tr>
@@ -47,6 +50,9 @@ const UserLists = ({users}) => {
                 </td>
                 <td className="px-6 py-4">
                 ...{users?.password.slice(-5)}
+                </td>
+                <td className="px-6 py-4">
+                {users?.role}
                 </td>
                 <td className="px-6 py-4">
                     <div className="flex items-center">

@@ -1,13 +1,13 @@
 import React from 'react'
 import AdminCard from '@/components/AdminCard'
-import UserLists from '@/components/UserLists'
+import UserLists from '@/components/UserLists';
 const Admin = ({users}) => {
-  return (
-  <>
-  <AdminCard />
-  <UserLists users={users} />
-  </>
-  )
+    return (
+      <>
+      <AdminCard />
+      <UserLists users={users} />
+      </>
+      )
 }
 
 export default Admin;

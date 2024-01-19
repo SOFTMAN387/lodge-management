@@ -1,7 +1,12 @@
 import React from 'react'
 import Link from "next/link";
+import { useSelector } from 'react-redux';
+import { useRouter } from "next/router";
 const AdminCard = () => {
-  return (
+  const router = useRouter();
+  const authUser= useSelector((state) => state.currentUser[0]) || [];
+  if (authUser?.emailExists?.role==="admin"){
+    return (
    <>
     <div className='text-center mt-2'>
       <Link href="/"><h1 className="font-bold text-xl  line-clamp-1">Admin Dashboard</h1></Link>
@@ -42,6 +47,12 @@ const AdminCard = () => {
    </div>
    </>
   )
+  }
+  else{
+    alert("Sorry ! You are not Admin..");
+    router.push("/");
+  }
+ 
 }
 
 export default AdminCard

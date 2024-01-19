@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import Block from "./Block";
+// import Block from "./Block";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useDispatch,useSelector } from "react-redux";
@@ -10,8 +10,7 @@ const Header1 = () => {
   const router = useRouter();
   const dispatch=useDispatch();
   const authUser= useSelector((state) => state.currentUser[0]) || [];
-
-
+ 
   const handleLogout = () => {
     dispatch(actions.logoutUser());
     router.push("/login");
@@ -19,13 +18,14 @@ const Header1 = () => {
   return (
     <div className=" flex justify-between border-b-2 border-gray-300 items-center h-24 px-10 w-full">
     <Link href={"/"}>
-    <Image
+    {/* <Image
         src={"/logo.png"}
         alt="logo"
         width={200}
         height={200}
         className=" w-28 h-28 "
-      />
+      /> */}
+      <h1 className="text-2xl font-extrabold  text-red-400 dark:text-red">HospitalityHub</h1>
     </Link>
       {/* <div className=" h-full flex md:hidden sm:hidden">
         <Block title={"Become a member"} para={"Additional 0% off on stays."} />

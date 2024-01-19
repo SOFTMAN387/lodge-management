@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import { Inter } from 'next/font/google';
 import Header1 from '@/components/Header1';
 import Header2 from '@/components/Header2';
 import Header3 from '@/components/Header3';
@@ -40,7 +39,7 @@ export default function Home({hotels}) {
         </div>
         <Header4 />
       </div>
-      <div className="grid lg:grid-cols-2">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2">
        {hotels?.map((e) => {
                 return (
                   <div  key={e._id}>

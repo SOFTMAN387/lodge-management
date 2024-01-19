@@ -70,7 +70,7 @@ const Hotels = ({ hotels,loc }) => {
        </div>
        <span className="flex text-center justify-center items-center">Hotel Searched Founs ! {total}</span>
         <hr/>
-        <div className="grid lg:grid-cols-2 ">
+        <div className="grid lg:grid-cols-3 md:grid-cols-2">
         {list?.length > 0
             ? list?.map((e) => {
                 return (
