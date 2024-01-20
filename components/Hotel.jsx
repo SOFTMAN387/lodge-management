@@ -6,13 +6,13 @@ const Hotel = ({ e }) => {
   
     <div className={`${e?.availability===false?"rounded-lg h-auto sm:w-auto justify-center opacity-50 items-center bg-gray-300 border-2 border-full border-red-500 rounded-md m-5":
     "rounded-lg h-auto sm:w-auto justify-center items-center  border-2 border-full border-red-500 rounded-md m-5"}`}>
-      <div className="flex justify-center items-center">
+      <div className="flex justify-center sm:w-auto sm:h-auto items-center">
       <Image
           src={e.banner}
           alt="hotel"
           width={300}
           height={300}
-          className=" sm:w-50 w-60 mt-2 h-60 md:w-96"
+          className=" sm:w-30  md:w-96"
         />
       </div>
        
@@ -35,7 +35,7 @@ const Hotel = ({ e }) => {
         <div className="  flex justify-center items-center flex-col md:text-xl sm:text-xl">
           <h2 className="font-bold text-xl  line-clamp-1">{e?.name}</h2>
           <p className=" text-justify text-lg">{e?.description}</p>
-          <div className=" text-xl ">
+          <div className=" text-xl sm:text-xs hidden lg:block md:block ">
             <span className=" font-bold">Facilities : </span>
             <ul className=" flex flex-col  lg:flex-row ">
               {e
@@ -43,7 +43,7 @@ const Hotel = ({ e }) => {
                     return (
                       <li
                         key={ele.name}
-                        className=" mb-3 flex items-center"
+                        className=" mb-3 flex items-center "
                       >
                         <span>
                           <Image
