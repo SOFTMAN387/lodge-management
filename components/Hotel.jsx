@@ -4,15 +4,15 @@ import Link from "next/link";
 const Hotel = ({ e }) => {
   return (
   
-    <div className={`${e?.availability===false?"rounded-lg h-auto sm:w-auto justify-center opacity-50 items-center bg-gray-300 border-2 border-full border-red-500 rounded-md m-5":
+    <div className={`${e?.availability===false?"rounded-lg h-auto sm:w-auto justify-center opacity-50 items-center bg-gray-300 border-2 border-full border-red-500 rounded-md ":
     "rounded-lg h-auto sm:w-auto justify-center items-center  border-2 border-full border-red-500 rounded-md m-5"}`}>
       <div className="flex justify-center sm:w-auto sm:h-auto items-center">
       <Image
           src={e.banner}
           alt="hotel"
-          width={300}
-          height={300}
-          className=" sm:w-30  md:w-96"
+          width={150}
+          height={150}
+          className=" sm:w-20  md:w-80"
         />
       </div>
        
@@ -24,8 +24,8 @@ const Hotel = ({ e }) => {
                     key={ele}
                     src={ele}
                     alt="hotel"
-                    width={50}
-                    height={100}
+                    width={40}
+                    height={50}
                     className=" sm:w-15 h-16 object-cover m-2  "
                   />
                 );

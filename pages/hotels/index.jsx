@@ -1,16 +1,18 @@
 import Header1 from "@/components/Header1";
 import Hotel from "@/components/Hotel";
 import Filters from "@/components/Filter";
-import axios from "axios";
+// import axios from "axios";
 import {useState } from "react";
 import Footer from "@/components/Footer";
 
-const Hotels = ({ hotels,loc }) => {
+const Hotels = ({ hotels }) => {
+
   const[price,setPrice]=useState(0);
   const [checkedList, setCheckedList] = useState([]);
   const [total,setToal]=useState(0);
 
   const handleCheckList = async (e) => {
+  
     let newList = [];
     if (e.target.checked===true) {
       newList.push(...checkedList,e.target.value);
@@ -24,34 +26,22 @@ const Hotels = ({ hotels,loc }) => {
    
   };
 
-//   const [facilityList,setFacilityList]=useState({
-//     "wifi":"",
-//     "swiming":"",
-//     "garden":"",
-//     "parking":"",
-//     "gym":""
-
-// });
-
-// const handleCheckList = async (e) => {
-//   if(e.target.checked===true){
-//       setFacilityList({...facilityList,[e.target.name]:e.target.value});
-//   }
-
-//   if(e.target.checked===false){
-//       setFacilityList({...facilityList,[e.target.name]:""}); 
-//   }
-// }
   
   const [list, setList] = useState([]);
 
   const handleSearch = async () => {
-    const { data } = await axios.get(`/api/hotels/filter?city=${loc}&val=${checkedList}&price=${price}`);
-    setToal(data?.facilities?.length);
-    if (data?.hotels) {
-     
-      setList(data.hotels);
+    // const { data } = await axios.get(`/api/hotels/filter?val=${checkedList}&city=${loc}&price=${price}`);
+    const filterData=hotels.filter((data)=>{
+      return data.price<=price ;
+      // || data.facilities.name===checkedList.some((ele)=>{return ele});
+    });
+    setToal(filterData?.length);
+    if (filterData.length>0) { 
+      setList(filterData);
+    }else{
+      setList([]);
     }
+  
   };
 
   return (
@@ -68,7 +58,7 @@ const Hotels = ({ hotels,loc }) => {
       
        
        </div>
-       <span className="flex text-center justify-center items-center">Hotel Searched Founs ! {total}</span>
+       <span className="flex text-center justify-center items-center">Searched Lodge ! {total} </span>
         <hr/>
         <div className="grid lg:grid-cols-3 md:grid-cols-2">
         {list?.length > 0

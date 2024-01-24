@@ -39,7 +39,7 @@ export default function Home({hotels}) {
         </div>
         <Header4 />
       </div>
-      <div className="grid lg:grid-cols-3 md:grid-cols-2">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 h-auto w-auto">
        {hotels?.map((e) => {
                 return (
                   <div  key={e._id}>

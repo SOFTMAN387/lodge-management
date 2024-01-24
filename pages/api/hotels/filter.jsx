@@ -9,6 +9,8 @@ export default async function handler(req, res) {
             const key = req.query.val;
             const price=req.query.price;
             const facilities = await Hotel.find({"location":req.query.city,"facilities.name": { $in: key },"price":{$lte:price} });
+            // const facilities = await Hotel.find({"location":req.query.city,"price":{$lte:price} });
+
             res.status(200).json({ msg: "Achha Lagta hai !", facilities });
           }
     } catch (error) {
