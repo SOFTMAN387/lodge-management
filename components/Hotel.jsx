@@ -51,6 +51,7 @@ const Hotel = ({ e }) => {
                             width={200}
                             height={200}
                             className="w-8 h-8 rounded-full"
+                            alt="img"
                           />
                         </span>
                         <span className="ml-5">{ele.name}</span>

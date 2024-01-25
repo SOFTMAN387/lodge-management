@@ -1,9 +1,9 @@
 import Header1 from "@/components/Header1";
 import Hotel from "@/components/Hotel";
 import Filters from "@/components/Filter";
-// import axios from "axios";
 import {useState } from "react";
 import Footer from "@/components/Footer";
+import Link from "next/link";
 
 const Hotels = ({ hotels }) => {
 
@@ -30,10 +30,13 @@ const Hotels = ({ hotels }) => {
   const [list, setList] = useState([]);
 
   const handleSearch = async () => {
-    // const { data } = await axios.get(`/api/hotels/filter?val=${checkedList}&city=${loc}&price=${price}`);
-    const filterData=hotels.filter((data)=>{
-      return data.price<=price ;
-      // || data.facilities.name===checkedList.some((ele)=>{return ele});
+    const filterData=hotels.filter((item)=>{
+    for(let val of item.facilities){
+      if( checkedList.includes(val.name) && item.price<=price){
+        return item;
+      }
+    
+    }
     });
     setToal(filterData?.length);
     if (filterData.length>0) { 
@@ -48,13 +51,38 @@ const Hotels = ({ hotels }) => {
     <>
       <Header1 />
       <div className="lg:flex  justify-center items-center w-full">
-          <Filters
+        {hotels?.length>0? 
+        <Filters
             price={price}
             setPrice={setPrice}
             handleCheckList={handleCheckList}
             handleSearch={handleSearch}     
-            checkedList={checkedList}
-          />
+            // checkedList={checkedList}
+          />:
+          <div className="lg:px-24 lg:py-24 md:py-20 md:px-44 px-4 py-24 items-center flex justify-center flex-col-reverse lg:flex-row md:gap-28 gap-16">
+                  <div className="xl:pt-24 w-full xl:w-1/2 relative pb-12 lg:pb-0">
+                      <div className="relative">
+                          <div className="absolute">
+                          <p className="my-2 text-gray-800">Please Match Your Distric Name </p>
+                              <div className="">
+                                  <h1 className="my-2 mb-5 text-gray-800 font-bold text-2xl">
+                                  Opps Nothing Found!
+                                  </h1>
+                                 
+                                  <Link href={`/`} className="sm:w-full lg:w-autoborder rounded md py-4 px-8 text-center bg-gradient-to-r from-pink-600 to-red-400 text-white hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-700 focus:ring-opacity-50">Take me there!</Link >
+                              </div>
+                          </div>
+                          <div>
+                              <img src="https://i.ibb.co/G9DC8S0/404-2.png" alt="img-alt" />
+                          </div>
+                      </div>
+                  </div>
+                  {/* <div>
+                      <img src="https://i.ibb.co/ck1SGFJ/Group.png" />
+                  </div> */}
+              </div>
+        }
+         
       
        
        </div>

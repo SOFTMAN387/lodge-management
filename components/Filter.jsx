@@ -5,10 +5,10 @@ const Filters = ({
   setPrice,
   handleCheckList,
   handleSearch,
-  checkedList
+  // checkedList
 
 }) => {
-    console.log(checkedList);
+    // console.log(checkedList);
   return (
     <>
       <div className=" lg:flex border-2 border-red-500 rounded-md m-5 w-auto py-5 px-2">
