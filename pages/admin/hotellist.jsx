@@ -6,7 +6,7 @@ import { useState } from 'react';
 import axios from "axios";
 import AddProducts from '@/components/modals/AddProducts';
 import EditProducts from '@/components/modals/EditProducts';
-const hotellist = ({hotels}) => {
+const Hotellist = ({hotels}) => {
   const[PrdctToggle,setPrdctToggle]=useState(false);
   const[EditToggle,setEditToggle]=useState(false);
   const[HotelIdData,setHotelIdData]=useState({});
@@ -39,7 +39,7 @@ const hotellist = ({hotels}) => {
       // console.log(DeleteHotel);
       if(DeleteHotel.status===200){
         alert(`Deleted Id${id}`);
-        router.push("/admin/hotellist");
+        router.push("/admin/Hotellist");
         // redirect('/admin/');
       }
     } catch (error) {
@@ -130,7 +130,7 @@ const hotellist = ({hotels}) => {
   )
 }
 
-export default hotellist;
+export default Hotellist;
 
 
 export async function getServerSideProps() {

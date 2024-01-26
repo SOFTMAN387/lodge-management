@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import axios from "axios";
 // import { redirect } from 'next/navigation'
-const orderslist = ({orders}) => {
+const Orderslist = ({orders}) => {
   const router = useRouter();
 
 
@@ -16,7 +16,7 @@ const orderslist = ({orders}) => {
       console.log(UpdateOrder);
       if(UpdateOrder.status===200){
         alert("Status Updated Successful !")
-        router.push("/admin/orderslist");
+        router.push("/admin/Orderslist");
         // redirect('/admin/');
       }
     } catch (error) {
@@ -36,7 +36,7 @@ const orderslist = ({orders}) => {
       console.log(DeleteOrder);
       if(DeleteOrder.status===200){
         alert(`Deleted Id${id}`)
-        router.push("/admin/orderslist");
+        router.push("/admin/Orderslist");
         // redirect('/admin/');
       }
     } catch (error) {
@@ -159,7 +159,7 @@ const orderslist = ({orders}) => {
   )
 }
 
-export default orderslist;
+export default Orderslist;
 
 
 export async function getServerSideProps() {
