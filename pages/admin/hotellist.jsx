@@ -94,7 +94,7 @@ const hotellist = ({hotels}) => {
         <tbody>
         {hotels?.map((e) => {
                 return (
-                    <tr className="bg-white border-b  dark:border-gray-700 hover:bg-red-500 dark:hover:bg-gray-200" key={e?.id}>
+                    <tr className="bg-white border-b  dark:border-gray-700 hover:bg-red-500 dark:hover:bg-gray-200" key={e?._id}>
                         
                     <td  className="px-6 py-4 font-semibold text-gray-900 ">
                         {e._id.slice(-5)}

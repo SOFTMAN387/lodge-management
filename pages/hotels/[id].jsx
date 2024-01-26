@@ -38,7 +38,7 @@ const SingleHotel = ({ hotel }) => {
               ? hotel.facilities?.map((ele) => {
                   return (
                     <li
-                      key={ele.name}
+                      key={ele._id}
                       className=" mr-10 mb-3 flex items-center"
                     >
                       <span>
@@ -47,6 +47,7 @@ const SingleHotel = ({ hotel }) => {
                           width={200}
                           height={200}
                           className="w-8 h-8 rounded-full"
+                          alt="er-manishgupta"
                         />
                       </span>
                       <span className="ml-5">{ele.name}</span>

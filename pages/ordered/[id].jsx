@@ -2,6 +2,7 @@ import Link from 'next/link';
 import React from 'react'
 import Header1 from '@/components/Header1';
 import Footer from '@/components/Footer';
+import Image from 'next/image';
 
 const userOrdered = ({order}) => {
   return (
@@ -21,8 +22,8 @@ const userOrdered = ({order}) => {
         <p className="text-lg md:text-xl dark:text-white font-semibold leading-6 xl:leading-5 text-gray-800">{orderData?.userHoteldata?.name}</p>
         <div className="mt-4 md:mt-6 flex flex-col md:flex-row justify-start items-start md:items-center md:space-x-6 xl:space-x-8 w-full">
           <div className="pb-4 md:pb-8 w-full md:w-40">
-            <img className="w-full hidden md:block" src={orderData?.userHoteldata?.banner} alt="orderHotel" />
-            <img className="w-full md:hidden" src={orderData?.userHoteldata?.banner} alt="orderHotel" />
+            <Image className="w-full hidden md:block" src={orderData?.userHoteldata?.banner} alt="orderHotel" />
+            <Image className="w-full md:hidden" src={orderData?.userHoteldata?.banner} alt="orderHotel" />
           </div>
           <div className="border-b border-gray-200 md:flex-row flex-col flex justify-between items-start w-full pb-8 space-y-4 md:space-y-0">
             <div className="w-full flex flex-col justify-start items-start space-y-8">
@@ -68,7 +69,7 @@ const userOrdered = ({order}) => {
           <div className="flex justify-between items-start w-full">
             <div className="flex justify-center items-center space-x-4">
               <div className="w-8 h-8">
-                <img className="w-full h-full" alt="logo" src="https://i.ibb.co/L8KSdNQ/image-3.png" />
+                <Image className="w-full h-full" alt="logo" src="https://i.ibb.co/L8KSdNQ/image-3.png" />
               </div>
               <div className="flex flex-col justify-start items-center">
                 <p className="text-lg leading-6 dark:text-white font-semibold text-gray-800">DPD Delivery<br /><span className="font-normal">Delivery with 24 Hours</span></p>
@@ -87,7 +88,7 @@ const userOrdered = ({order}) => {
       <div className="flex flex-col md:flex-row xl:flex-col justify-start items-stretch h-full w-full md:space-x-6 lg:space-x-8 xl:space-x-0">
         <div className="flex flex-col justify-start items-start flex-shrink-0">
           <div className="flex justify-center w-full md:justify-start items-center space-x-4 py-8 border-b border-gray-200">
-            <img src="https://i.ibb.co/5TSg7f6/Rectangle-18.png" alt="avatar" />
+            <Image src="https://i.ibb.co/5TSg7f6/Rectangle-18.png" alt="avatar" />
             <div className="flex justify-start items-start flex-col space-y-2">
               <p className="text-base dark:text-white font-semibold leading-4 text-left text-gray-800">{orderData?.userId}</p>
               <p className="text-sm dark:text-gray-300 leading-5 text-gray-600">10 Previous Orders</p>

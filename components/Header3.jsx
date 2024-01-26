@@ -17,7 +17,7 @@ const Header3 = () => {
             type="text"
             placeholder="Search By Distric..."
             className=" w-12/12  h-16 outline-none px-3 text-lg border-r-2 border-gray-400 "
-            required="true"
+            required
             onChange={(e) => {
               setCity(e.target.value);
             }}

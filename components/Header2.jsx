@@ -2,18 +2,23 @@ const Header2 = () => {
     const List = [
       {
         name: "Patna",
+        _id:1,
       },
       {
         name: "Kolkata",
+        _id:2,
       },
       {
         name: "Mumbai",
+        _id:2,
       },
       {
         name: "Delhi",
+        _id:4,
       },
       {
         name: "Hyderabad",
+        _id:5,
       },
     ];
     return (
@@ -22,7 +27,7 @@ const Header2 = () => {
           {
               List.map((e)=>{
                   return(
-                      <span key={e.name} >{e.name}</span>
+                      <span key={e._id} >{e.name}</span>
                   )
               })
           }

@@ -6,6 +6,7 @@ import Header1 from "@/components/Header1";
 import axios from "axios";
 import { useRouter } from "next/router";
 import Footer from "@/components/Footer";
+import Image from "next/image";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -43,62 +44,12 @@ const Register = () => {
       <Head>
         <title>OYO - Login !</title>
       </Head>
-      {/* <div className="flex justify-center items-center ">
    
-           <div className="m-10  ">
-     <h3 className=" text-2xl font-bold ml-10">Login / Signup</h3>
-            <input
-                  type="text"
-                  placeholder="Enter your name..."
-                  className=" outline-none border my-3 border-black px-3 ml-10 w-75 h-10"
-                  onChange={(e) => setName(e.target.value)}
-                />
-                  <input
-                type="email"
-                placeholder="Enter your email..."
-                className=" outline-none border my-3 border-black px-3 ml-10 w-75 h-10"
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <input
-                type="password"
-                placeholder="Enter yourt password..."
-                className=" outline-none border my-3 border-black px-3 ml-10 w-75 h-10"
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              
-              
-                <button
-                type="submit"
-                className="ml-10 w-60 h-14 text-lg font-bold bg-red-500 hover:cursor-pointer hover:bg-red-600 text-white my-5 rounded-lg"
-                onClick={ handleSignup}
-              >
-                Sign Up
-              </button>
-              {err && <span className="text-red-400 text-sm ml-10">{err}</span>}
-              <br/>
-              <p className=" ml-10 text-xl">
-                <span>
-                  "Already have an account ?
-                </span>
-               
-                    <span
-                  className=" ml-10 border-b-2 border-red-500 text-red-600 pb-1 hover:cursor-pointer"
-                >
-           
-              <Link href={"/login"}>
-                  Login
-                  </Link>
-                </span>
-             
-               
-              </p>
-            </div>
-          </div> */}
 
 <section className="bg-gray-50 dark:bg-gray-100">
   <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
       <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-red">
-          <img className="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo" />
+          <Image className="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo" />
          HospitalityHub 
       </a>
       <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 bg-gradient-to-r from-pink-600 to-red-400 dark:border-gray-200">

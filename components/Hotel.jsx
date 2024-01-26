@@ -9,19 +9,19 @@ const Hotel = ({ e }) => {
       <div className="flex justify-center sm:w-auto sm:h-auto items-center">
       <Image
           src={e.banner}
-          alt="hotel"
+          alt="hotel-img"
           width={150}
           height={150}
           className=" sm:w-20  md:w-80"
         />
       </div>
        
-        <div className="flex justify-center items-center gap-1 ">
+        <div className="flex justify-center items-center gap-1 " key={e._id}>
           {e
             ? e.gallery?.map((ele) => {
                 return (
                   <Image
-                    key={ele}
+                    key={ele._id}
                     src={ele}
                     alt="hotel"
                     width={40}
@@ -42,7 +42,7 @@ const Hotel = ({ e }) => {
                 ? e.facilities?.map((ele) => {
                     return (
                       <li
-                        key={ele.name}
+                        key={ele._id}
                         className=" mb-3 flex items-center "
                       >
                         <span>

@@ -4,6 +4,7 @@ import Filters from "@/components/Filter";
 import {useState } from "react";
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import Image from "next/image";
 
 const Hotels = ({ hotels }) => {
 
@@ -73,7 +74,7 @@ const Hotels = ({ hotels }) => {
                               </div>
                           </div>
                           <div>
-                              <img src="https://i.ibb.co/G9DC8S0/404-2.png" alt="img-alt" />
+                              <Image src="https://i.ibb.co/G9DC8S0/404-2.png" alt="img-alt" />
                           </div>
                       </div>
                   </div>

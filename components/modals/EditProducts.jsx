@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useRouter } from "next/router";
 import React from 'react'
+import Image from 'next/image';
 import { useState } from 'react';
 const EditProducts = ({setEditToggle,HotelIdData}) => {
     const router = useRouter();
@@ -75,7 +76,7 @@ const EditProducts = ({setEditToggle,HotelIdData}) => {
                     
                     <div className="col-span-2">
                         <label for="banner" className="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">
-                        <img
+                        <Image
                             src={hotelUpdateData?.banner}
                             alt="avatar"
                             className="relative inline-block object-cover object-center w-12 h-12 rounded-lg"
@@ -84,11 +85,11 @@ const EditProducts = ({setEditToggle,HotelIdData}) => {
                         Banner Url</label>
                         <input onChange={EditHotelInput} type="text" name="banner" value={hotelUpdateData?.banner} id="banner" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:border-gray-500 dark:placeholder-gray-400 dark:text-dark dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Paste Banner url" required="" />
                     </div>
-                    {HotelIdData?.gallery?.map((glry,index)=>{
+                    {HotelIdData?.gallery?.map((glry)=>{
                         return(<>
-                        <div className="col-span-2" key={index}>
+                        <div className="col-span-2" key={glry._id}>
                         <label for={glry} className="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">
-                        <img
+                        <Image
                             src={glry}
                             alt="avatar"
                             className="relative inline-block object-cover object-center w-12 h-12 rounded-lg"
@@ -106,7 +107,7 @@ const EditProducts = ({setEditToggle,HotelIdData}) => {
                     </div>
                     <div className="col-span-2 sm:col-span-1">
                     <label for={ele?.img} className="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">
-                    <img src={ele?.img}
+                    <Image src={ele?.img}
                             alt="avatar"
                             className="relative inline-block object-cover object-center w-8 h-8 rounded-lg"
                         />Logo Url {index+1}</label>

@@ -3,6 +3,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { useState } from "react";
 import Header1 from "@/components/Header1";
+import Image from "next/image";
 import axios from "axios";
 import { actions } from "@/redux/reducers/oyoReducers";
 import { useDispatch } from "react-redux";
@@ -96,7 +97,7 @@ const [err,setErr]=useState("");
    <section className="bg-gray-50 dark:bg-gray-100">
   <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
       <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-red">
-          <img className="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo" />
+          <Image className="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo" />
          HospitalityHub 
       </a>
       <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 bg-gradient-to-r from-pink-600 to-red-400 dark:border-gray-200">

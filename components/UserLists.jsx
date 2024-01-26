@@ -89,9 +89,9 @@ const UserLists = ({users}) => {
             </tr>
         </thead>
         <tbody>
-            {users?.map((users,i)=>{
+            {users?.map((users)=>{
                 return(<>
-                     <tr className="bg-white border-b  dark:border-gray-700 hover:bg-gray-50 " key={i}>
+                     <tr className="bg-white border-b  dark:border-gray-700 hover:bg-gray-50 " key={users._id}>
                      <td className="px-6 py-4">...{users?._id.slice(-5)}</td>
                     <th scope="row" className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap ">
                     <div className="ps-3">
