@@ -13,10 +13,10 @@ const Orderslist = ({orders}) => {
       const UpdateOrder=await axios.patch(`/api/orders/${id}`,{
         "userOrderStatus":"confirm"
       });
-      console.log(UpdateOrder);
+      // console.log(UpdateOrder);
       if(UpdateOrder.status===200){
         alert("Status Updated Successful !")
-        router.push("/admin/Orderslist");
+        router.push("/admin/orderslist");
         // redirect('/admin/');
       }
     } catch (error) {

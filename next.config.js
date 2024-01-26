@@ -20,7 +20,9 @@ const nextConfig = {
       "tse7.mm.bing.net",
       "tse8.mm.bing.net",
       "tse9.mm.bing.net",
-      "dynamic-media-cdn.tripadvisor.com" 
+      "dynamic-media-cdn.tripadvisor.com" ,
+      "www.freeiconspng.com",
+      "i.ibb.co"
 
     ],
   },

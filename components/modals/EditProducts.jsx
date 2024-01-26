@@ -80,12 +80,14 @@ const EditProducts = ({setEditToggle,HotelIdData}) => {
                             src={hotelUpdateData?.banner}
                             alt="avatar"
                             className="relative inline-block object-cover object-center w-12 h-12 rounded-lg"
+                            width={50}
+                            height={50}
                         
                         />
                         Banner Url</label>
                         <input onChange={EditHotelInput} type="text" name="banner" value={hotelUpdateData?.banner} id="banner" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:border-gray-500 dark:placeholder-gray-400 dark:text-dark dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Paste Banner url" required="" />
                     </div>
-                    {HotelIdData?.gallery?.map((glry)=>{
+                    {HotelIdData?.gallery?.map((glry,index)=>{
                         return(<>
                         <div className="col-span-2" key={glry._id}>
                         <label for={glry} className="block mb-2 text-sm font-medium text-gray-900 dark:text-dark">
@@ -93,6 +95,8 @@ const EditProducts = ({setEditToggle,HotelIdData}) => {
                             src={glry}
                             alt="avatar"
                             className="relative inline-block object-cover object-center w-12 h-12 rounded-lg"
+                            width={30}
+                            height={30}
                         />Gallery Url {index+1}</label>
                         <input  type="text"  id={glry} value={glry} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:border-gray-500 dark:placeholder-gray-400 dark:text-dark dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Paste Facility url" required="" />
                     </div>
@@ -110,6 +114,8 @@ const EditProducts = ({setEditToggle,HotelIdData}) => {
                     <Image src={ele?.img}
                             alt="avatar"
                             className="relative inline-block object-cover object-center w-8 h-8 rounded-lg"
+                            width={10}
+                            height={10}
                         />Logo Url {index+1}</label>
                         <input  type="text" id={ele?.img} value={ele?.img} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:border-gray-500 dark:placeholder-gray-400 dark:text-dark dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Paste Gallery url" required="" />
                     </div>

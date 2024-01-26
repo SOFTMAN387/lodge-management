@@ -39,7 +39,7 @@ const Hotellist = ({hotels}) => {
       // console.log(DeleteHotel);
       if(DeleteHotel.status===200){
         alert(`Deleted Id${id}`);
-        router.push("/admin/Hotellist");
+        router.push("/admin/hotellist");
         // redirect('/admin/');
       }
     } catch (error) {
