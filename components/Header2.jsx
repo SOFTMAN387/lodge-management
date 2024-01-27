@@ -5,20 +5,16 @@ const Header2 = () => {
         _id:1,
       },
       {
-        name: "Kolkata",
+        name: "Gaya",
         _id:2,
       },
       {
-        name: "Mumbai",
-        _id:2,
+        name: "Muzaffarpur",
+        _id:3,
       },
       {
-        name: "Delhi",
+        name: "Samastipur...",
         _id:4,
-      },
-      {
-        name: "Hyderabad",
-        _id:5,
       },
     ];
     return (

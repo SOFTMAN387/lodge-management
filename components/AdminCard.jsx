@@ -17,8 +17,8 @@ const AdminCard = () => {
         <Link href="/admin/hotellist">
         <div className="flex justify-center items-center">
              <div  className=" flex flex-col justify-center items-center sm:w-50 w-60 mt-2 h-40 md:w-96">
-              <h1 className="font-bold text-xl  line-clamp-1">Hotels</h1>
-              <p>12</p>
+              <h1 className="font-bold text-xl  line-clamp-1">Lodges</h1>
+              <p>200+</p>
              </div>
              </div>
         </Link>
@@ -29,7 +29,7 @@ const AdminCard = () => {
         <div className="flex justify-center items-center">
              <div  className=" flex flex-col justify-center items-center sm:w-50 w-60 mt-2 h-40 md:w-96">
               <h1 className="font-bold text-xl  line-clamp-1">Orders</h1>
-              <p>3</p>
+              <p>3000+</p>
              </div>
              </div>
         </Link>
@@ -39,7 +39,7 @@ const AdminCard = () => {
         <div className="flex justify-center items-center">
              <div  className=" flex flex-col justify-center items-center sm:w-50 w-60 mt-2 h-40 md:w-96">
               <h1 className="font-bold text-xl  line-clamp-1">Customers</h1>
-              <p>5+</p>
+              <p>250+</p>
              </div>
              </div>
         </Link>

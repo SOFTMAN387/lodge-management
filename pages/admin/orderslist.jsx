@@ -36,7 +36,7 @@ const Orderslist = ({orders}) => {
       console.log(DeleteOrder);
       if(DeleteOrder.status===200){
         alert(`Deleted Id${id}`)
-        router.push("/admin/Orderslist");
+        router.push("/admin/orderslist");
         // redirect('/admin/');
       }
     } catch (error) {

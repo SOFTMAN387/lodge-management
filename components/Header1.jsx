@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useDispatch,useSelector } from "react-redux";
 import { actions } from "@/redux/reducers/oyoReducers";
+import styles from './Profile.module.css'
 const Header1 = () => {
 
   const router = useRouter();
@@ -16,7 +17,7 @@ const Header1 = () => {
     router.push("/login");
   };
   return (
-    <div className=" flex justify-between border-b-2 border-gray-300 items-center h-24 px-10 w-full">
+    <div className="m-0 p-0 flex justify-between border-b-2 border-gray-300 items-center h-24 px-7 w-full">
     <Link href={"/"}>
     {/* <Image
         src={"/logo.png"}
@@ -25,42 +26,28 @@ const Header1 = () => {
         height={200}
         className=" w-28 h-28 "
       /> */}
-      <h1 className="text-2xl font-extrabold  text-red-400 dark:text-red">HospitalityHub</h1>
-    </Link>
-      {/* <div className=" h-full flex md:hidden sm:hidden">
-        <Block title={"Become a member"} para={"Additional 0% off on stays."} />
-        <Block
-          title={"OYO for business"}
-          para={"Trusted by 5000 corporates."}
-        />
-        <Block title={"List your property"} para={"Start earning in 30 min."} />
-        <Block title={"987654321"} para={"Call us to book now."} />
-        <div className="flex items-center px-3 ">
-          <Image
-            src={"/demo.svg"}
-            alt="demo"
-            width={200}
-            height={200}
-            className=" w-10 h-10 rounded-full mr-5"
-          />
-        
-          
-        </div>
-      
-      </div> */}
-     
+      <h1 className="text-2xl font-extrabold  text-red-400 dark:text-red ">HospitalityHub</h1>
+    </Link> 
       {authUser?.token ? (
-        <>
-          <Link href={`/ordered/${authUser?.emailExists?._id}`}  className=" ml-1 border-b-2  pb-1 hover:cursor-pointer font-bold">
-              Your Hotel
-        </Link>
-            <h3
-            className=" ml-1 border-b-2 border-red-500 text-red-600 pb-1 hover:cursor-pointer font-bold"
-              onClick={handleLogout}
-            >
-              Logout
-            </h3>
-            </>
+        <> 
+        <label className={styles.dropdown}>
+
+        <div className={styles.ddButton}>
+        Profile
+        </div>
+
+        <input type="checkbox" className={styles.ddInput} id="test" />
+
+        <ul className={styles.ddMenu}>
+          <li><Link href={`/ordered/${authUser?.emailExists?._id}`}> Your Room </Link></li>
+          <li  onClick={handleLogout}>Logout</li>
+          <li className={styles.divider}></li>
+          <li>
+        <Link href="/admin" className={styles.listItems}>Admin Panel</Link>
+          </li>
+        </ul>
+      </label>
+   </>
           ) : (
             <Link href={"/login"}  className=" ml-1 border-b-2  pb-1 hover:cursor-pointer font-bold">
               Login / Signup

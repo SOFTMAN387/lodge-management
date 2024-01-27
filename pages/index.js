@@ -12,13 +12,13 @@ export default function Home({hotels}) {
   <div>
   <Head>
         <title>
-          OYO : India`s Best Online Hotel Booking Site For Sanitized Stay.
+          HospitalityHub : Bihar Engineering and Polytechnic ,Engineer Manish Gupta.
         </title>
    </Head>
       <Header1 />
       <Header2 />
       <Header3 />
-      <div className="mx-50">
+      {/* <div className="mx-50">
         <div className=" my-14">
           <Image
             src={"/banner1.avif"}
@@ -38,7 +38,7 @@ export default function Home({hotels}) {
           />
         </div>
         <Header4 />
-      </div>
+      </div> */}
       <div className="grid lg:grid-cols-3 md:grid-cols-2 h-auto w-auto">
        {hotels?.map((e) => {
                 return (

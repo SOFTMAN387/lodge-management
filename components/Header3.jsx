@@ -10,7 +10,7 @@ const Header3 = () => {
       <div className=" p-5">
         <form>
         <h2 className=" text-4xl text-white text-center font-bold">
-         Specially for Bihar Engineering Students,200 + lodges.
+         Specially for Bihar Engineering & Polytechnic,1000 + rooms.
         </h2>
         <div className="flex justify-center my-5 mx-20   ">
           <input

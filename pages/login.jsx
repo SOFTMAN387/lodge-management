@@ -42,58 +42,8 @@ const [err,setErr]=useState("");
     <>
     <Header1 />
       <Head>
-        <title>OYO - Login !</title>
+        <title>Er. Manish Gupta's Lodge - Login !</title>
       </Head>
-      {/* <div className="flex justify-center items-center ">
-   
-            <div className="m-10  ">
-              <h3 className=" text-2xl font-bold ml-10">Login / Signup</h3>
-              <p className=" font-bold text-lg ml-10">
-                Please enter your phone number to continue
-              </p>
-             
-                  <input
-                type="email"
-                placeholder="Enter your email..."
-                className=" outline-none border my-3 border-black px-3 py-1 w-75 ml-10 h-10"
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <input
-                type="password"
-                placeholder="Enter yourt password..."
-                className=" outline-none border my-3 border-black px-3 py-1 w-75 ml-10 h-10"
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              
-                <button
-                type="submit"
-                className=" w-60 h-14 text-lg font-bold bg-red-500 hover:cursor-pointer hover:bg-red-600 text-white ml-10 rounded-lg"
-                onClick={handleLogin }
-              >
-              Login
-              </button>
-              <br/>
-              {err && <span className="text-red-400 text-sm ml-10">{err}</span>}
-              <br/>
-              <p className=" ml-10 text-xl">
-                <span>
-                 Don`t have an account ?
-                </span>
-             
-                    <span
-                  className=" ml-10 border-b-2 border-red-500 text-red-600 pb-1 hover:cursor-pointer"
-                
-                >
-                  <Link href={"/register"}>
-                  Sin Up
-                  </Link>
-                </span>
-               
-               
-               
-              </p>
-            </div>
-          </div> */}
    <section className="bg-gray-50 dark:bg-gray-100">
   <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
       <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-red">

@@ -42,14 +42,14 @@ const Register = () => {
     <> <Header1 />
 
       <Head>
-        <title>OYO - Login !</title>
+        <title>Er.Manish Gupta's Lodge - Register !</title>
       </Head>
    
 
 <section className="bg-gray-50 dark:bg-gray-100">
   <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
       <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-red">
-          <Image className="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo" />
+      <Image className="w-8 h-8 mr-2" src="https://www.freeiconspng.com/uploads/lodge-icon-3.jpg" width={20} height={20} alt="logo" />
          HospitalityHub 
       </a>
       <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 bg-gradient-to-r from-pink-600 to-red-400 dark:border-gray-200">

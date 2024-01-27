@@ -1,4 +1,4 @@
-import '@/styles/globals.css'
+import '@/styles/globals.css';
 import {store,persistor}from '../redux/Store';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
