@@ -5,7 +5,6 @@ export default function Document() {
      <Html lang="en">
       <Head>
         <link rel="icon" href="https://www.freeiconspng.com/uploads/lodge-icon-3.jpg"></link>
-        <title>Er. Manish Gupta's Lodge , MIT,Muzaffarpur</title>
       </Head>
       <body>
         <Main />

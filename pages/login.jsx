@@ -42,7 +42,7 @@ const [err,setErr]=useState("");
     <>
     <Header1 />
       <Head>
-        <title>Er. Manish Gupta's Lodge - Login !</title>
+        <title>Er. Manish Gupta&apos;s Lodge - Login !</title>
       </Head>
    <section className="bg-gray-50 dark:bg-gray-100">
   <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">

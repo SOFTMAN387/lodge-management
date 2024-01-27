@@ -42,7 +42,7 @@ const Register = () => {
     <> <Header1 />
 
       <Head>
-        <title>Er.Manish Gupta's Lodge - Register !</title>
+        <title>Er.Manish Gupta&apos;s Lodge - Register !</title>
       </Head>
    
 
