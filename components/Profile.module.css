@@ -3,18 +3,22 @@
   display: inline-block;
   position: relative;
   box-sizing: border-box;
+  /* margin-right: 10%; */
 }
 
 .ddButton {
   display: inline-block;
-  border: 1px solid gray;
-  border-radius: 4px;
-  padding: 7px 30px 10px 16px;
+  width: 30px;
+  height: 30px;
+  /* border: 1px solid gray; */
+  /* border-radius: 4px; */
+  /* padding: 7px 30px 10px 16px; */
+  border-radius:50%;
   background-color: #ffffff;
   cursor: pointer;
   white-space: nowrap;
 }
-
+/* 
 .ddButton:after {
   content: '';
   position: absolute;
@@ -26,7 +30,7 @@
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
   border-top: 5px solid black;
-}
+} */
 
 .ddButton:hover {
   background-color: #eeeeee;
@@ -40,6 +44,7 @@
 .ddMenu {
   position: absolute;
   top: 100%;
+  right: 5%;
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 0;

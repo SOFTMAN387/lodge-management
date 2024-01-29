@@ -11,7 +11,6 @@ const Header1 = () => {
   const router = useRouter();
   const dispatch=useDispatch();
   const authUser= useSelector((state) => state.currentUser[0]) || [];
- 
   const handleLogout = () => {
     dispatch(actions.logoutUser());
     router.push("/login");
@@ -33,7 +32,7 @@ const Header1 = () => {
         <label className={styles.dropdown}>
 
         <div className={styles.ddButton}>
-        Profile
+       <Image src="https://tse1.mm.bing.net/th?id=OIP.GHGGLYe7gDfZUzF_tElxiQHaHa&pid=Api&rs=1&c=1&qlt=95&w=117&h=117" width={30} height={30} />
         </div>
 
         <input type="checkbox" className={styles.ddInput} id="test" />
@@ -42,9 +41,10 @@ const Header1 = () => {
           <li><Link href={`/ordered/${authUser?.emailExists?._id}`}> Your Room </Link></li>
           <li  onClick={handleLogout}>Logout</li>
           <li className={styles.divider}></li>
-          <li>
-        <Link href="/admin" className={styles.listItems}>Admin Panel</Link>
-          </li>
+          {authUser?.emailExists?.role==="admin"? <li>
+          <Link href="/admin" className={styles.listItems}>Admin Panel</Link>
+          </li>:""}
+         
         </ul>
       </label>
    </>

@@ -34,8 +34,8 @@ const hotelSchema = new mongoose.Schema(
         type:String
     },
     availability:{
-        type:Boolean,
-        default:true
+        type:String,
+        default:"true"
     }
   },
   { timestamps: true }

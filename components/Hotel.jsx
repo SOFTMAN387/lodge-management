@@ -34,7 +34,7 @@ const Hotel = ({ e }) => {
         </div>
         <div className="  flex justify-center items-center flex-col md:text-xl sm:text-xl">
           <h2 className="font-bold text-xl  line-clamp-1">{e?.name}</h2>
-          <p className=" text-justify text-lg">{e?.description}</p>
+          <p className=" text-justify text-sm">{e?.description}</p>
           <div className=" text-xl sm:text-xs hidden lg:block md:block ">
             <span className=" font-bold">Facilities : </span>
             <ul className=" flex flex-col  lg:flex-row ">
