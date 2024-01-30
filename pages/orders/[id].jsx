@@ -7,6 +7,8 @@ import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
 import Footer from '@/components/Footer';
 import Image from 'next/image';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // import Link from 'next/link';
 
 const Order = ({hotel}) => {
@@ -29,7 +31,7 @@ const Order = ({hotel}) => {
   const handleVerify=()=>{
     const {male,female,child,bookingDate,leavingDate}=orderData;
       if(!male||!female||!child||!bookingDate||!leavingDate){
-        alert("Pleas Select Every Field...");
+        toast("Pleas Select Every Field...");
       }else{
         setVerify(true);
       }
@@ -45,7 +47,7 @@ const Order = ({hotel}) => {
        router.push(`/ordered/${authUserId}`); 
       }    
     } catch (error) {
-      alert("Payment Failed !"); 
+      toast("Payment Failed !"); 
       router.back();
       console.log(error);
     }
@@ -55,7 +57,7 @@ const Order = ({hotel}) => {
     try {
       if(token){
         setOrderData({...orderData,token,totalAmount:hotel?.price,shippingAddress,userId:authUserId,userHoteldata:hotel});
-        alert("Payment Successfull !");   
+        toast("Payment Successfull !");   
       }
     } catch (error) {
       console.log(error);
@@ -70,6 +72,18 @@ const Order = ({hotel}) => {
    <>
    <Header1/>   
   <div className="flex flex-col items-center border-b bg-white py-4 sm:flex-row sm:px-10 lg:px-20 xl:px-32">
+     <ToastContainer
+      position="top-center"
+      autoClose={2000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="dark"
+        />
   <a href="#" className="text-2xl font-bold text-gray-800">sneekpeeks</a>
   <div className="mt-4 py-2 text-xs sm:mt-0 sm:ml-auto sm:text-base">
     <div className="relative">
@@ -101,24 +115,23 @@ const Order = ({hotel}) => {
          Book room by selecting gender with availaibility...
         </h2>
         <div className='flex justify-center items-center mt-5 sm:w-full'>  
-          <input
+       <input
             type="date"
             placeholder="From Date..."
            onChange={handleChange}
             name="bookingDate"
-            className="  h-16  outline-none px-1 text-lg border-r-2 border-gray-400 col-span-1"
+            className="  h-16 outline-none px-1  text-lg border-r-2 border-gray-400 col-span-1"
 
           />
-          <br/>
+          {/* <br/> */}
           <input
             type="date"
             placeholder="To Date..."
            onChange={handleChange}
             name='leavingDate'
-            className=" h-16  outline-none px-1 text-lg col-span-1"
-          />
-          
-          <select className=" h-16  px-3 py-2 w-20  bg-red-400 hover:cursor-pointer hover:bg-red-600 text-white text-xl"
+            className=" h-16 outline-none px-1 text-lg col-span-1"
+          /> 
+          <select className=" h-16 w-10 px-3 py-2 w-20  bg-red-400 hover:cursor-pointer hover:bg-red-600 text-white text-xl"
          onChange={handleChange}
          name='male'>         
             <option disabled>Male</option>
@@ -127,7 +140,7 @@ const Order = ({hotel}) => {
             <option>2</option>
           </select>
          
-          <select className=" h-16  px-3 py-2 w-20  bg-red-400 hover:cursor-pointer hover:bg-red-600 text-white text-xl"
+          <select className=" h-16 w-10 px-3 py-2 w-20  bg-red-400 hover:cursor-pointer hover:bg-red-600 text-white text-xl"
          onChange={handleChange}
          name='female'>          
             <option disabled>Female</option>
@@ -136,7 +149,7 @@ const Order = ({hotel}) => {
             <option>2</option>
           </select>
          
-          <select className=" h-16  px-3 py-2 w-20  bg-red-400 hover:cursor-pointer hover:bg-red-600 text-white text-xl"
+          <select className=" h-16 w-10 px-3 py-2 w-20  bg-red-400 hover:cursor-pointer hover:bg-red-600 text-white text-xl"
          onChange={handleChange}
          name='child'>
             <option disabled>Child</option>

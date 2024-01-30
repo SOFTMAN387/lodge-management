@@ -7,7 +7,8 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import Footer from "@/components/Footer";
 import Image from "next/image";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -29,7 +30,7 @@ const Register = () => {
     console.log(res);
     if (res?.data) {
       // Cookies.set("user", res.data.token, { expires: 7 });
-      alert(res.data.msg);
+      toast(res.data.msg);
       router.back();
     }     
     } catch (error) {
@@ -47,6 +48,18 @@ const Register = () => {
    
 
 <section className="bg-gray-50 dark:bg-gray-100">
+    <ToastContainer
+          position="top-center"
+          autoClose={2000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+            />
   <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
       <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-red">
       <Image className="w-8 h-8 mr-2" src="https://www.freeiconspng.com/uploads/lodge-icon-3.jpg" width={20} height={20} alt="logo" />

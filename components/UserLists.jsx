@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import  { useRouter } from 'next/router';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const UserLists = ({users}) => {
 
     const router=useRouter();
@@ -42,7 +44,7 @@ const UserLists = ({users}) => {
           });
         //   console.log(DeleteUser);
           if(DeleteUser.status===200){
-            alert(`Deleted Id${id}`)
+            toast(`Deleted Id${id}`)
             router.push("/admin");
           }
         } catch (error) {
@@ -54,8 +56,20 @@ const UserLists = ({users}) => {
 
   return (
    <>
-   
+  <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+   />  
 <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+
         <div className='text-right m-2'>
             <button className=" w-40 text-white h-14 rounded-lg bg-blue-400 text-lg">
                Total Users {users?.length}

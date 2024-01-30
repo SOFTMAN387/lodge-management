@@ -66,7 +66,7 @@ export async function getServerSideProps() {
 
   return {
     props: {
-      hotels:data.allhotels.slice(-12)||null,
+      hotels:data.allhotels.slice(-15)||null,
     },
   };
 }

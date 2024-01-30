@@ -3,6 +3,8 @@ import AdminCard from '@/components/AdminCard';
 import Image from "next/image";
 import { useRouter } from "next/router";
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // import { redirect } from 'next/navigation'
 const Orderslist = ({orders}) => {
   const router = useRouter();
@@ -15,7 +17,7 @@ const Orderslist = ({orders}) => {
       });
       // console.log(UpdateOrder);
       if(UpdateOrder.status===200){
-        alert("Status Updated Successful !")
+        toast("Status Updated Successful !")
         router.push("/admin/orderslist");
         // redirect('/admin/');
       }
@@ -35,7 +37,7 @@ const Orderslist = ({orders}) => {
       });
       console.log(DeleteOrder);
       if(DeleteOrder.status===200){
-        alert(`Deleted Id${id}`)
+        toast(`Deleted Id${id}`)
         router.push("/admin/orderslist");
         // redirect('/admin/');
       }
@@ -48,6 +50,18 @@ const Orderslist = ({orders}) => {
   return (
    <>
    <AdminCard />
+    <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+          />
     <span className='w-40 ml-2 mt-5 h-14'>Total Orders {orders?.length}</span>
       <div className='text-right m-2'>
       <button className=" w-40 text-white h-14 rounded-lg bg-blue-400 text-lg">
@@ -96,7 +110,7 @@ const Orderslist = ({orders}) => {
         <tbody>
         {orders?.map((e) => {
                 return (
-                    <tr className="bg-white border-b  dark:border-gray-700 hover:bg-red-500 dark:hover:bg-gray-200" key={e?._id}>
+                    <tr className="bg-white border-b  dark:border-gray-700  dark:hover:bg-gray-200" key={e?._id}>
                         
                     <td  className="px-6 py-4 font-semibold text-gray-900 ">
                         ...{e?._id.slice(-5)}

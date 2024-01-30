@@ -9,7 +9,6 @@ import Footer from "@/components/Footer";
 
 const SingleHotel = ({ hotel }) => {
   const authUser= useSelector((state) => state.currentUser[0]) || [];
-  console.log(hotel);
 
 
   return (
@@ -22,14 +21,14 @@ const SingleHotel = ({ hotel }) => {
         <Image
           src={hotel?.banner}
           alt="hotel"
-          width={2000}
-          height={2000}
-          className=" w-full h-large-box my-5"
+          width={200}
+          height={200}
+          className=" w-full  my-5"
         />
         <div className=" ">
           <h3 className=" text-3xl font-bold">{hotel?.name}</h3>
-          <p className=" text-xl my-5 text-justify">{hotel?.description}</p>
-          <button className=" w-60 h-14 rounded-lg bg-blue-400 text-lg">
+          <p className=" text-sm my-5 ">{hotel?.description}</p>
+          <button className=" w-60 h-14 rounded-lg bg-blue-400 text-white text-lg">
             Price : &#8377; {hotel?.price}
           </button>
           <p className=" text-3xl font-bold my-5">Facilities : </p>
@@ -59,13 +58,13 @@ const SingleHotel = ({ hotel }) => {
 
           {authUser?.token? (
             <Link href={`/orders/${hotel?._id}`}>
-              <button className=" w-60 h-14 rounded-lg bg-red-400 my-5 text-lg">
+              <button className=" w-60 h-14 text-white rounded-lg bg-red-400 my-5 text-lg">
                 Book Now
               </button>
             </Link>
           ) : (
             <Link href={`/login`}>
-              <button className=" w-60 h-14 rounded-lg bg-red-400 my-5 text-lg">
+              <button className=" w-60 h-14 text-white rounded-lg bg-red-400 my-5 text-lg">
                 Book Now
               </button>
             </Link>

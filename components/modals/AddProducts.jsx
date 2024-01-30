@@ -1,6 +1,8 @@
 import React from 'react'
 import { useState } from 'react';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const AddProducts = ({setPrdctToggle}) => {
     const [ImgGallery1,setImgGallery1]=useState("");
     const [ImgGallery2,setImgGallery2]=useState("");
@@ -70,9 +72,9 @@ const AddProducts = ({setPrdctToggle}) => {
              
             }    
           );
-          console.log(AddHotel);
+        //   console.log(AddHotel);
           if(AddHotel.status===201){
-           alert("Hotel Added !");
+          toast("Hotel Added !");
            setPrdctToggle(false);
             // router.push("/admin/hotellist");
             // redirect('/admin/');
@@ -83,10 +85,21 @@ const AddProducts = ({setPrdctToggle}) => {
     
     
       }
-    console.log(hotelData);
   return (
    <>
    <div  className=" overflow-y-auto overflow-x-auto ml-center mt-5 z-50 justify-center items-center w-[800px] md:inset-0 h-[calc(100%-2rem)] max-h-full">
+   <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+          />
     <div className="relative p-4 w-full max-w-x-lg max-h-full">
         {/* <!-- Modal content --> */}
         <div className="relative bg-white rounded-lg shadow dark:bg-gray-100">

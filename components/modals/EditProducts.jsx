@@ -3,6 +3,8 @@ import { useRouter } from "next/router";
 import React from 'react'
 import Image from 'next/image';
 import { useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const EditProducts = ({setEditToggle,HotelIdData}) => {
     const router = useRouter();
     const [hotelUpdateData,setHotelUpdateData]=useState(HotelIdData);
@@ -20,7 +22,7 @@ const EditProducts = ({setEditToggle,HotelIdData}) => {
                 const updateData=await axios.put(`/api/hotels/update`,hotelUpdateData);
                 if(updateData.status===200){
                     setEditToggle(false);
-                    alert("Hotel Updated Successfull !.");
+                    toast("Hotel Updated Successfull !.");
                     router.push("/admin/hotellist");
                 }
             }else{
@@ -34,6 +36,18 @@ const EditProducts = ({setEditToggle,HotelIdData}) => {
   return (
    <>
     <div  className=" overflow-y-auto overflow-x-auto ml-center mt-5 z-50 justify-center items-center w-[800px] md:inset-0 h-[calc(100%-2rem)] max-h-full">
+    <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+          />
     <div className="relative p-4 w-full max-w-x-lg max-h-full">
         {/* <!-- Modal content --> */}
         <div className="relative bg-white rounded-lg shadow dark:bg-gray-100">

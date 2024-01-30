@@ -6,6 +6,8 @@ import { useState } from 'react';
 import axios from "axios";
 import AddProducts from '@/components/modals/AddProducts';
 import EditProducts from '@/components/modals/EditProducts';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Hotellist = ({hotels}) => {
   const[PrdctToggle,setPrdctToggle]=useState(false);
   const[EditToggle,setEditToggle]=useState(false);
@@ -38,7 +40,7 @@ const Hotellist = ({hotels}) => {
       });
       // console.log(DeleteHotel);
       if(DeleteHotel.status===200){
-        alert(`Deleted Id${id}`);
+        toast(`Deleted Id${id}`);
         router.push("/admin/hotellist");
         // redirect('/admin/');
       }
@@ -51,7 +53,18 @@ const Hotellist = ({hotels}) => {
   return (
    <>
     <AdminCard />
-
+    <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+          />
     {/* Add Product Modal starts */}
     <div className='flex justify-center items-center w-full mt-5'>
     {PrdctToggle===true && <AddProducts setPrdctToggle={setPrdctToggle}/>}
@@ -94,7 +107,7 @@ const Hotellist = ({hotels}) => {
         <tbody>
         {hotels?.map((e) => {
                 return (
-                    <tr className="bg-white border-b  dark:border-gray-700 hover:bg-red-500 dark:hover:bg-gray-200" key={e?._id}>
+                    <tr className="bg-white border-b  dark:border-gray-700 dark:hover:bg-gray-200" key={e?._id}>
                         
                     <td  className="px-6 py-4 font-semibold text-gray-900 ">
                         {e._id.slice(-5)}

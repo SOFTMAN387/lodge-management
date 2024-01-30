@@ -6,7 +6,7 @@ export default async function handler(req, res) {
     connectDB();
     //Creating New Hotel=======================
     if (req.method === "POST") {
-      const newHotel = new Hotel(req.body,{new:true});
+      const newHotel = new Hotel(req.body);
       const result = await newHotel.save();
       res.status(201).json({ msg: "Hotel added !", result });
     }
@@ -21,15 +21,15 @@ export default async function handler(req, res) {
     }
   }
     //Deleting Hotel=======================
-  if(req.method==="DELETE"){
-    const {id}=req.body;
-     if(id){
-         const Hotel = await Hotel.findByIdAndDelete({_id:id},{new:true});
-         res.status(200).json({msg:"Hotele Deleted" ,Hotel});
-     }else{
-     return res.status(200).json({ msg: "No Hotel Deleted !" });
-     }
- }
+//   if(req.method==="DELETE"){
+//     const {id}=req.body;
+//      if(id){
+//          const Hotel = await Hotel.findByIdAndDelete({_id:id},{new:true});
+//          res.status(200).json({msg:"Hotele Deleted" ,Hotel});
+//      }else{
+//      return res.status(200).json({ msg: "No Hotel Deleted !" });
+//      }
+//  }
 
   } catch (error) {
     return res.status(500).json({ msg:error });

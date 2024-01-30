@@ -7,6 +7,8 @@ import Image from "next/image";
 import axios from "axios";
 import { actions } from "@/redux/reducers/oyoReducers";
 import { useDispatch } from "react-redux";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // import Cookies from "js-cookie";
 import { useRouter } from "next/router";
 import Footer from "@/components/Footer";
@@ -29,7 +31,7 @@ const [err,setErr]=useState("");
     if (res?.data) {
       // Cookies.set("user", res.data.token, { expires: 7 });
       dispatch(actions.loginUser([res.data]));
-      alert(res.data.msg);
+      toast(res.data.msg);
       router.push("/");
     }
       
@@ -45,6 +47,18 @@ const [err,setErr]=useState("");
         <title>Er. Manish Gupta&apos;s Lodge - Login !</title>
       </Head>
    <section className="bg-gray-50 dark:bg-gray-100">
+      <ToastContainer
+      position="top-center"
+      autoClose={2000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="dark"
+        />
   <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
       <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-red">
           <Image className="w-8 h-8 mr-2" src="https://www.freeiconspng.com/uploads/lodge-icon-3.jpg" width={20} height={20} alt="logo" />

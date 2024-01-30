@@ -9,7 +9,7 @@ const Header3 = () => {
     <div className=" bg-gradient-to-r from-pink-600 to-red-400 h-85 w-100 items-center">
       <div className=" p-5">
         <form>
-        <h2 className=" text-4xl text-white text-center font-bold">
+        <h2 className=" text-2xl text-white text-center font-bold">
          Specially for Bihar Engineering & Polytechnic,1000 + rooms.
         </h2>
         <div className="flex justify-center my-5 mx-20   ">
